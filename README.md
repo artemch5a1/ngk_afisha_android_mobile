@@ -51,7 +51,7 @@
 ### Шаги
 1. Клонировать репозиторий:
    ```
-   git clone https://github.com/.../ngk-afisha-android.git
+   git clone https://github.com/artemch5a1/ngk_afisha_android_mobile.git
    ```
 2. Открыть проект в Android Studio
 3. Настроить API-адреса
@@ -75,7 +75,7 @@ app/
 ## 🔗 Связанные проекты
 
 Backend репозиторий:  
-https://github.com/.../ngk-afisha-backend
+https://github.com/artemch5a1/ngk_afisha_backend
 
 Дизайн в Figma:  
 https://www.figma.com/design/4MBvuGuI88IimuwWQ06PeA/NGKAfisha
