@@ -1,14 +1,13 @@
 package com.example.ngkafisha.application.identityService.accountContext.useCases
 
+import com.example.domain.common.models.CustomResult
+import com.example.domain.identityService.accountContext.abstractions.repositories.AccountRepository
+import com.example.domain.identityService.accountContext.abstractions.service.auth.SessionStoreService
+import com.example.domain.identityService.userContext.models.Student
 import com.example.ngkafisha.application.common.base.BaseUseCase
 import com.example.ngkafisha.application.common.utils.isEmailValid
-import com.example.ngkafisha.domain.identityService.accountContext.abstractions.repositories.AccountRepository
-import com.example.ngkafisha.domain.identityService.userContext.models.Student
-import com.example.ngkafisha.domain.common.models.CustomResult
-import com.example.ngkafisha.domain.identityService.accountContext.abstractions.service.auth.SessionStoreService
 import java.time.LocalDate
 import javax.inject.Inject
-import kotlin.String
 
 class RegistryStudentUseCase @Inject constructor(
     private val accountRepository: AccountRepository,
@@ -17,7 +16,8 @@ class RegistryStudentUseCase @Inject constructor(
     data class Request(val email: String,
                        val password: String,
                        val repeatPassword: String,
-                       val student: Student)
+                       val student: Student
+    )
 
     override suspend fun invokeLogic(request: Request): CustomResult<Unit> {
         val validation: CustomResult<Request> = validate(request)

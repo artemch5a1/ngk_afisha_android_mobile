@@ -1,12 +1,12 @@
 package com.example.ngkafisha.data.identityService.userContext.mapper
 
+import com.example.domain.identityService.userContext.models.Student
 import com.example.ngkafisha.data.identityService.userContext.dto.StudentDto
 import com.example.ngkafisha.data.identityService.userContext.dto.UpdateStudentProfileDto
-import com.example.ngkafisha.domain.identityService.userContext.models.Student
 
 object StudentMapper {
 
-    fun toDomain(studentDto: StudentDto) : Student{
+    fun toDomain(studentDto: StudentDto) : Student {
 
         return Student(
             studentId = studentDto.studentId,

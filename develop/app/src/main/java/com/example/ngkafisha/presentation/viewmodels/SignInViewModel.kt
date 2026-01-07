@@ -4,8 +4,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavHostController
+import com.example.domain.common.models.CustomResult
+import com.example.domain.identityService.accountContext.models.AccountSession
 import com.example.ngkafisha.application.identityService.accountContext.useCases.LoginUseCase
-import com.example.ngkafisha.domain.identityService.accountContext.models.AccountSession
 import com.example.ngkafisha.presentation.models.states.ActualState
 import com.example.ngkafisha.presentation.models.states.SignInState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,7 +15,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import com.example.ngkafisha.domain.common.models.CustomResult
 
 @HiltViewModel
 class SignInViewModel @Inject constructor(

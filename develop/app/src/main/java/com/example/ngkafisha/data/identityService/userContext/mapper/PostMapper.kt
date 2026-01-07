@@ -1,11 +1,11 @@
 package com.example.ngkafisha.data.identityService.userContext.mapper
 
+import com.example.domain.identityService.userContext.models.Post
 import com.example.ngkafisha.data.identityService.userContext.dto.PostDto
-import com.example.ngkafisha.domain.identityService.userContext.models.Post
 
 object PostMapper {
 
-    fun toDomain(postDto: PostDto) : Post{
+    fun toDomain(postDto: PostDto) : Post {
 
         return Post(
             postId = postDto.postId,

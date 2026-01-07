@@ -1,12 +1,9 @@
 package com.example.ngkafisha.data.identityService.userContext.mapper
 
+import com.example.domain.identityService.userContext.models.User
 import com.example.ngkafisha.data.identityService.userContext.dto.UpdateUserDto
 import com.example.ngkafisha.data.identityService.userContext.dto.UserDto
-import com.example.ngkafisha.domain.identityService.userContext.models.User
 import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.OffsetDateTime
-import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
 object UserMapper {

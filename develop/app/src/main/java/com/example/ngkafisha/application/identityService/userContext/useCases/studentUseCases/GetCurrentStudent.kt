@@ -1,10 +1,10 @@
 package com.example.ngkafisha.application.identityService.userContext.useCases.studentUseCases
 
+import com.example.domain.common.models.CustomResult
+import com.example.domain.identityService.accountContext.abstractions.service.auth.SessionStoreService
+import com.example.domain.identityService.userContext.abstractions.repositories.StudentRepository
+import com.example.domain.identityService.userContext.models.Student
 import com.example.ngkafisha.application.common.base.BaseUseCase
-import com.example.ngkafisha.domain.common.models.CustomResult
-import com.example.ngkafisha.domain.identityService.accountContext.abstractions.service.auth.SessionStoreService
-import com.example.ngkafisha.domain.identityService.userContext.abstractions.repositories.StudentRepository
-import com.example.ngkafisha.domain.identityService.userContext.models.Student
 import javax.inject.Inject
 
 class GetCurrentStudent @Inject constructor(
@@ -14,7 +14,7 @@ class GetCurrentStudent @Inject constructor(
 
 
     override suspend fun invokeLogic(request: Request): CustomResult<Student> {
-        val response:Student = studentRepository.getCurrentStudent()
+        val response: Student = studentRepository.getCurrentStudent()
 
         return CustomResult.success(response)
     }

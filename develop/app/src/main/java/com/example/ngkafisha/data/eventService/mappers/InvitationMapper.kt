@@ -1,5 +1,11 @@
 package com.example.ngkafisha.data.eventService.mappers
 
+import com.example.domain.common.enums.InvitationStatus
+import com.example.domain.eventService.contracts.AcceptRequestOnInvitation
+import com.example.domain.eventService.contracts.CancelRequestOnInvitation
+import com.example.domain.eventService.contracts.RejectMemberOnInvitation
+import com.example.domain.eventService.contracts.TakeRequestOnInvitation
+import com.example.domain.eventService.models.Invitation
 import com.example.ngkafisha.data.eventService.dto.invitations.AcceptRequestOnInvitationDto
 import com.example.ngkafisha.data.eventService.dto.invitations.CancelRequestOnInvitationDto
 import com.example.ngkafisha.data.eventService.dto.invitations.CreateInvitationDto
@@ -7,19 +13,13 @@ import com.example.ngkafisha.data.eventService.dto.invitations.InvitationDto
 import com.example.ngkafisha.data.eventService.dto.invitations.RejectMemberOnInvitationDto
 import com.example.ngkafisha.data.eventService.dto.invitations.TakeRequestOnInvitationDto
 import com.example.ngkafisha.data.eventService.dto.invitations.UpdateInvitationDto
-import com.example.ngkafisha.domain.common.enums.InvitationStatus
-import com.example.ngkafisha.domain.eventService.contracts.AcceptRequestOnInvitation
-import com.example.ngkafisha.domain.eventService.contracts.CancelRequestOnInvitation
-import com.example.ngkafisha.domain.eventService.contracts.RejectMemberOnInvitation
-import com.example.ngkafisha.domain.eventService.contracts.TakeRequestOnInvitation
-import com.example.ngkafisha.domain.eventService.models.Invitation
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
 import java.time.ZoneId
 
 object InvitationMapper {
 
-    fun toDomain(invitationDto: InvitationDto) : Invitation{
+    fun toDomain(invitationDto: InvitationDto) : Invitation {
 
         return Invitation(
             invitationId = invitationDto.invitationId,

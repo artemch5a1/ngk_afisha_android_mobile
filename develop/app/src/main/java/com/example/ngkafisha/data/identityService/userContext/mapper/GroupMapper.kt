@@ -1,7 +1,7 @@
 package com.example.ngkafisha.data.identityService.userContext.mapper
 
+import com.example.domain.identityService.userContext.models.Group
 import com.example.ngkafisha.data.identityService.userContext.dto.GroupDto
-import com.example.ngkafisha.domain.identityService.userContext.models.Group
 
 object GroupMapper {
 

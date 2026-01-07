@@ -1,6 +1,6 @@
 package com.example.ngkafisha.data.common.auth
 
-import com.example.ngkafisha.domain.identityService.accountContext.abstractions.service.auth.SessionInfoStore
+import com.example.domain.identityService.accountContext.abstractions.service.auth.SessionInfoStore
 import okhttp3.Interceptor
 import okhttp3.Response
 

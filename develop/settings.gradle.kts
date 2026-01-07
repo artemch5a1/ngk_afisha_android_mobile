@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "ngkafisha"
 include(":app")
- 
+include(":domain")

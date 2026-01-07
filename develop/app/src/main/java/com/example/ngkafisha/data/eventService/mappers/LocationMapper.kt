@@ -1,7 +1,7 @@
 package com.example.ngkafisha.data.eventService.mappers
 
+import com.example.domain.eventService.models.Location
 import com.example.ngkafisha.data.eventService.dto.events.LocationDto
-import com.example.ngkafisha.domain.eventService.models.Location
 
 object LocationMapper {
 

@@ -1,10 +1,10 @@
 package com.example.ngkafisha.data.identityService.userContext.repositories
 
+import com.example.domain.identityService.userContext.abstractions.repositories.GroupRepository
+import com.example.domain.identityService.userContext.models.Group
 import com.example.ngkafisha.data.common.apiMethods.safeApiCall
 import com.example.ngkafisha.data.identityService.common.remote.IdentityApi
 import com.example.ngkafisha.data.identityService.userContext.mapper.GroupMapper
-import com.example.ngkafisha.domain.identityService.userContext.abstractions.repositories.GroupRepository
-import com.example.ngkafisha.domain.identityService.userContext.models.Group
 import javax.inject.Inject
 
 class GroupRepositoryImpl @Inject constructor(

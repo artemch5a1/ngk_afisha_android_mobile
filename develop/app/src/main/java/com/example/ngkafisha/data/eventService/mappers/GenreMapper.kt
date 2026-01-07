@@ -1,7 +1,7 @@
 package com.example.ngkafisha.data.eventService.mappers
 
+import com.example.domain.eventService.models.Genre
 import com.example.ngkafisha.data.eventService.dto.events.GenreDto
-import com.example.ngkafisha.domain.eventService.models.Genre
 
 object GenreMapper {
 

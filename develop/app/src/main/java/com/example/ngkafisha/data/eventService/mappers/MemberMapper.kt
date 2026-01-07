@@ -1,12 +1,12 @@
 package com.example.ngkafisha.data.eventService.mappers
 
+import com.example.domain.common.enums.MemberStatus
+import com.example.domain.eventService.models.Member
 import com.example.ngkafisha.data.eventService.dto.invitations.MemberDto
-import com.example.ngkafisha.domain.common.enums.MemberStatus
-import com.example.ngkafisha.domain.eventService.models.Member
 
 object MemberMapper {
 
-    fun toDomain(memberDto: MemberDto) : Member{
+    fun toDomain(memberDto: MemberDto) : Member {
 
         return Member(
             invitationId = memberDto.invitationId,

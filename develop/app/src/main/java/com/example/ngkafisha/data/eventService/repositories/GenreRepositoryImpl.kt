@@ -1,10 +1,10 @@
 package com.example.ngkafisha.data.eventService.repositories
 
+import com.example.domain.eventService.abstractions.repositories.GenreRepository
+import com.example.domain.eventService.models.Genre
 import com.example.ngkafisha.data.common.apiMethods.safeApiCall
 import com.example.ngkafisha.data.eventService.mappers.GenreMapper
 import com.example.ngkafisha.data.eventService.remote.EventApi
-import com.example.ngkafisha.domain.eventService.abstractions.repositories.GenreRepository
-import com.example.ngkafisha.domain.eventService.models.Genre
 import javax.inject.Inject
 
 class GenreRepositoryImpl @Inject constructor(

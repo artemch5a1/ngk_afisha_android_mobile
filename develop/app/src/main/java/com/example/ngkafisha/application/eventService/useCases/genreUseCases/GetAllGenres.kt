@@ -1,10 +1,10 @@
 package com.example.ngkafisha.application.eventService.useCases.genreUseCases
 
+import com.example.domain.common.models.CustomResult
+import com.example.domain.eventService.abstractions.repositories.GenreRepository
+import com.example.domain.eventService.models.Genre
+import com.example.domain.identityService.accountContext.abstractions.service.auth.SessionStoreService
 import com.example.ngkafisha.application.common.base.BaseUseCase
-import com.example.ngkafisha.domain.common.models.CustomResult
-import com.example.ngkafisha.domain.eventService.abstractions.repositories.GenreRepository
-import com.example.ngkafisha.domain.eventService.models.Genre
-import com.example.ngkafisha.domain.identityService.accountContext.abstractions.service.auth.SessionStoreService
 import javax.inject.Inject
 
 class GetAllGenres @Inject constructor(

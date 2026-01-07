@@ -1,11 +1,11 @@
 package com.example.ngkafisha.application.identityService.accountContext.services.auth
 
-import com.example.ngkafisha.domain.common.models.CustomEvent
-import com.example.ngkafisha.domain.common.models.ReadOnlyEvent
-import com.example.ngkafisha.domain.identityService.accountContext.abstractions.service.auth.SessionInfoStore
-import com.example.ngkafisha.domain.identityService.accountContext.abstractions.service.auth.SessionStoreService
-import com.example.ngkafisha.domain.identityService.accountContext.models.Account
-import com.example.ngkafisha.domain.identityService.accountContext.models.AccountSession
+import com.example.domain.common.models.CustomEvent
+import com.example.domain.common.models.ReadOnlyEvent
+import com.example.domain.identityService.accountContext.abstractions.service.auth.SessionInfoStore
+import com.example.domain.identityService.accountContext.abstractions.service.auth.SessionStoreService
+import com.example.domain.identityService.accountContext.models.Account
+import com.example.domain.identityService.accountContext.models.AccountSession
 
 class Session : SessionInfoStore, SessionStoreService {
 

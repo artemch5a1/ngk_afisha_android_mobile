@@ -1,5 +1,4 @@
 package com.example.ngkafisha.data.identityService.accountContext.dto
-import com.example.ngkafisha.domain.common.enums.Role
 import kotlinx.serialization.Serializable
 import java.util.UUID
 

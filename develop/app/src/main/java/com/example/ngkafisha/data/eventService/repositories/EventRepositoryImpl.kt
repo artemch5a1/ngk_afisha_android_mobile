@@ -1,12 +1,12 @@
 package com.example.ngkafisha.data.eventService.repositories
 
+import com.example.domain.eventService.abstractions.repositories.EventRepository
+import com.example.domain.eventService.contracts.CreatedEvent
+import com.example.domain.eventService.contracts.UpdatedEvent
+import com.example.domain.eventService.models.Event
 import com.example.ngkafisha.data.common.apiMethods.safeApiCall
 import com.example.ngkafisha.data.eventService.mappers.EventMapper
 import com.example.ngkafisha.data.eventService.remote.EventApi
-import com.example.ngkafisha.domain.eventService.abstractions.repositories.EventRepository
-import com.example.ngkafisha.domain.eventService.contracts.CreatedEvent
-import com.example.ngkafisha.domain.eventService.contracts.UpdatedEvent
-import com.example.ngkafisha.domain.eventService.models.Event
 import java.util.UUID
 import javax.inject.Inject
 

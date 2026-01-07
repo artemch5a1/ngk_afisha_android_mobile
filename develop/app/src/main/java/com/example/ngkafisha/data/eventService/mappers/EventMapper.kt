@@ -1,13 +1,13 @@
 package com.example.ngkafisha.data.eventService.mappers
 
+import com.example.domain.eventService.contracts.CreatedEvent
+import com.example.domain.eventService.contracts.UpdatedEvent
+import com.example.domain.eventService.models.Event
 import com.example.ngkafisha.data.eventService.dto.events.CreateEventDto
 import com.example.ngkafisha.data.eventService.dto.events.CreatedEventDto
 import com.example.ngkafisha.data.eventService.dto.events.EventDto
 import com.example.ngkafisha.data.eventService.dto.events.UpdateEventDto
 import com.example.ngkafisha.data.eventService.dto.events.UpdatedEventDto
-import com.example.ngkafisha.domain.eventService.contracts.CreatedEvent
-import com.example.ngkafisha.domain.eventService.contracts.UpdatedEvent
-import com.example.ngkafisha.domain.eventService.models.Event
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
 import java.time.ZoneId
@@ -70,7 +70,7 @@ object EventMapper {
 
     }
 
-    fun toCreatedEvent(createdEventDto: CreatedEventDto) : CreatedEvent{
+    fun toCreatedEvent(createdEventDto: CreatedEventDto) : CreatedEvent {
 
         return CreatedEvent(
             eventId = createdEventDto.eventId,
@@ -87,7 +87,7 @@ object EventMapper {
 
     }
 
-    fun toUpdatedEvent(updatedEventDto: UpdatedEventDto) : UpdatedEvent{
+    fun toUpdatedEvent(updatedEventDto: UpdatedEventDto) : UpdatedEvent {
 
         return UpdatedEvent(
             eventId = updatedEventDto.eventId,

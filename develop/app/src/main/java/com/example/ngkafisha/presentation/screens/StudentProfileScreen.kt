@@ -38,7 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.example.ngkafisha.domain.identityService.userContext.models.Student
+import com.example.domain.identityService.userContext.models.Student
 import com.example.ngkafisha.presentation.models.states.ActualState
 import com.example.ngkafisha.presentation.viewmodels.StudentProfileViewModel
 

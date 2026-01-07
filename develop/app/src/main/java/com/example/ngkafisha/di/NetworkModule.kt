@@ -1,11 +1,11 @@
 package com.example.ngkafisha.di
 
+import com.example.domain.identityService.accountContext.abstractions.service.auth.SessionInfoStore
 import com.example.ngkafisha.data.common.httpClient.HttpClient
 import com.example.ngkafisha.data.eventService.remote.EventApi
 import com.example.ngkafisha.data.eventService.remote.EventApiService
 import com.example.ngkafisha.data.identityService.common.remote.IdentityApi
 import com.example.ngkafisha.data.identityService.common.remote.IdentityApiService
-import com.example.ngkafisha.domain.identityService.accountContext.abstractions.service.auth.SessionInfoStore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

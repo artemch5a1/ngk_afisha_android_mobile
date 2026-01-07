@@ -1,11 +1,11 @@
 package com.example.ngkafisha.data.identityService.userContext.mapper
 
+import com.example.domain.identityService.userContext.models.Department
 import com.example.ngkafisha.data.identityService.userContext.dto.DepartmentDto
-import com.example.ngkafisha.domain.identityService.userContext.models.Department
 
 object DepartmentMapper {
 
-    fun toDomain(departmentDto: DepartmentDto) : Department{
+    fun toDomain(departmentDto: DepartmentDto) : Department {
 
         return Department(
             departmentId = departmentDto.departmentId,

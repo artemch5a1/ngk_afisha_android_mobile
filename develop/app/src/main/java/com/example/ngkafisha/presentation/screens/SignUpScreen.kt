@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.example.ngkafisha.domain.identityService.userContext.models.Group
+import com.example.domain.identityService.userContext.models.Group
 import com.example.ngkafisha.presentation.components.DatePickerField
 import com.example.ngkafisha.presentation.components.DefaultField
 import com.example.ngkafisha.presentation.components.GroupDropdownField

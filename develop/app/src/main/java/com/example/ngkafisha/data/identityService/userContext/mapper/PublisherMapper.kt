@@ -1,12 +1,12 @@
 package com.example.ngkafisha.data.identityService.userContext.mapper
 
+import com.example.domain.identityService.userContext.models.Publisher
 import com.example.ngkafisha.data.identityService.userContext.dto.PublisherDto
 import com.example.ngkafisha.data.identityService.userContext.dto.UpdatePublisherProfileDto
-import com.example.ngkafisha.domain.identityService.userContext.models.Publisher
 
 object PublisherMapper {
 
-    fun toDomain(publisherDto: PublisherDto) : Publisher{
+    fun toDomain(publisherDto: PublisherDto) : Publisher {
 
         return Publisher(
             publisherId = publisherDto.publisherId,

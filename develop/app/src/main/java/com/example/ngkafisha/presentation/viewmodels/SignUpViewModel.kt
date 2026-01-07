@@ -6,13 +6,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavHostController
+import com.example.domain.common.models.CustomResult
+import com.example.domain.identityService.userContext.models.Group
 import com.example.ngkafisha.application.identityService.accountContext.useCases.RegistryStudentUseCase
 import com.example.ngkafisha.application.identityService.userContext.useCases.groupUseCases.GetAllGroupUseCase
 import com.example.ngkafisha.presentation.mapper.StudentMapper
 import com.example.ngkafisha.presentation.models.states.ActualState
 import com.example.ngkafisha.presentation.models.states.StudentSignUpState
-import com.example.ngkafisha.domain.common.models.CustomResult
-import com.example.ngkafisha.domain.identityService.userContext.models.Group
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

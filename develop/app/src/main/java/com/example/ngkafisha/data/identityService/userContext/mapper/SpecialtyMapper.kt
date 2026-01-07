@@ -1,11 +1,11 @@
 package com.example.ngkafisha.data.identityService.userContext.mapper
 
+import com.example.domain.identityService.userContext.models.Specialty
 import com.example.ngkafisha.data.identityService.userContext.dto.SpecialtyDto
-import com.example.ngkafisha.domain.identityService.userContext.models.Specialty
 
 object SpecialtyMapper {
 
-    fun toDomain(specialtyDto: SpecialtyDto) : Specialty{
+    fun toDomain(specialtyDto: SpecialtyDto) : Specialty {
 
         return Specialty(
             specialtyId = specialtyDto.specialtyId,

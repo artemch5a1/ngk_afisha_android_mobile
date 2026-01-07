@@ -1,10 +1,10 @@
 package com.example.ngkafisha.data.identityService.userContext.repositories
 
+import com.example.domain.identityService.userContext.abstractions.repositories.UserRepository
+import com.example.domain.identityService.userContext.models.User
 import com.example.ngkafisha.data.common.apiMethods.safeApiCall
 import com.example.ngkafisha.data.identityService.common.remote.IdentityApi
 import com.example.ngkafisha.data.identityService.userContext.mapper.UserMapper
-import com.example.ngkafisha.domain.identityService.userContext.abstractions.repositories.UserRepository
-import com.example.ngkafisha.domain.identityService.userContext.models.User
 import java.util.UUID
 import javax.inject.Inject
 

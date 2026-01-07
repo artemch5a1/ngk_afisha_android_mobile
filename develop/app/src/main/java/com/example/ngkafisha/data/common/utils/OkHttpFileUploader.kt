@@ -1,6 +1,6 @@
 package com.example.ngkafisha.data.common.utils
 
-import com.example.ngkafisha.domain.common.abstractions.utils.FileUploader
+import com.example.domain.common.abstractions.utils.FileUploader
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaType

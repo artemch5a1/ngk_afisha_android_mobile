@@ -1,11 +1,11 @@
 package com.example.ngkafisha.data.eventService.mappers
 
+import com.example.domain.eventService.models.EventRole
 import com.example.ngkafisha.data.eventService.dto.invitations.EventRoleDto
-import com.example.ngkafisha.domain.eventService.models.EventRole
 
 object EventRoleMapper {
 
-    fun toDomain(eventRoleDto: EventRoleDto) : EventRole{
+    fun toDomain(eventRoleDto: EventRoleDto) : EventRole {
 
         return EventRole(
             eventRoleId = eventRoleDto.eventRoleId,

@@ -1,7 +1,7 @@
 package com.example.ngkafisha.data.identityService.accountContext.mapper
 
+import com.example.domain.identityService.accountContext.contracts.ChangePassword
 import com.example.ngkafisha.data.identityService.accountContext.dto.ChangePasswordDto
-import com.example.ngkafisha.domain.identityService.accountContext.contracts.ChangePassword
 
 object ContractMapper {
 
