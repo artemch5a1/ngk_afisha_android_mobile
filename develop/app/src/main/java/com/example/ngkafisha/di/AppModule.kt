@@ -1,5 +1,7 @@
 package com.example.ngkafisha.di
 
+import com.example.application.identityService.accountContext.services.auth.Session
+import com.example.application.identityService.accountContext.useCases.LoginUseCase
 import com.example.data.common.utils.OkHttpFileUploader
 import com.example.data.eventService.remote.EventApi
 import com.example.data.eventService.repositories.EventRepositoryImpl
@@ -32,8 +34,6 @@ import com.example.domain.identityService.userContext.abstractions.repositories.
 import com.example.domain.identityService.userContext.abstractions.repositories.PublisherRepository
 import com.example.domain.identityService.userContext.abstractions.repositories.StudentRepository
 import com.example.domain.identityService.userContext.abstractions.repositories.UserRepository
-import com.example.ngkafisha.application.identityService.accountContext.services.auth.Session
-import com.example.ngkafisha.application.identityService.accountContext.useCases.LoginUseCase
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

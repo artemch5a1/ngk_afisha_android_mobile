@@ -2,7 +2,7 @@ package com.example.ngkafisha.presentation.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.ngkafisha.application.identityService.accountContext.useCases.ChangePasswordUseCase
+import com.example.application.identityService.accountContext.useCases.ChangePasswordUseCase
 import com.example.ngkafisha.presentation.models.states.ActualState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -2,11 +2,11 @@ package com.example.ngkafisha.presentation.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.application.identityService.userContext.useCases.groupUseCases.GetAllGroupUseCase
+import com.example.application.identityService.userContext.useCases.studentUseCases.GetCurrentStudent
+import com.example.application.identityService.userContext.useCases.studentUseCases.UpdateStudentUseCase
 import com.example.domain.identityService.userContext.models.Group
 import com.example.domain.identityService.userContext.models.Student
-import com.example.ngkafisha.application.identityService.userContext.useCases.groupUseCases.GetAllGroupUseCase
-import com.example.ngkafisha.application.identityService.userContext.useCases.studentUseCases.GetCurrentStudent
-import com.example.ngkafisha.application.identityService.userContext.useCases.studentUseCases.UpdateStudentUseCase
 import com.example.ngkafisha.presentation.models.states.ActualState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

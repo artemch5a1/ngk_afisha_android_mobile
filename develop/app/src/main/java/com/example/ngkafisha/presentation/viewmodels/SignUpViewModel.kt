@@ -6,10 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavHostController
+import com.example.application.identityService.accountContext.useCases.RegistryStudentUseCase
+import com.example.application.identityService.userContext.useCases.groupUseCases.GetAllGroupUseCase
 import com.example.domain.common.models.CustomResult
 import com.example.domain.identityService.userContext.models.Group
-import com.example.ngkafisha.application.identityService.accountContext.useCases.RegistryStudentUseCase
-import com.example.ngkafisha.application.identityService.userContext.useCases.groupUseCases.GetAllGroupUseCase
 import com.example.ngkafisha.presentation.mapper.StudentMapper
 import com.example.ngkafisha.presentation.models.states.ActualState
 import com.example.ngkafisha.presentation.models.states.StudentSignUpState
