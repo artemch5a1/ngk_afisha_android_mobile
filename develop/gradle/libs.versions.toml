@@ -11,6 +11,9 @@ composeBom = "2024.09.00"
 firebaseCrashlyticsBuildtools = "3.0.6"
 runtimeLivedata = "1.9.4"
 coilCompose = "2.7.0"
+hilt = "2.52"
+hiltNavigationCompose = "1.1.0"
+ksp = "2.0.21-1.0.25"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -35,4 +38,5 @@ coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose"
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-
+kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
