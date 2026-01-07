@@ -1,0 +1,39 @@
+package com.example.ngkafisha.presentation.viewmodels
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.ngkafisha.application.identityService.userContext.useCases.publisherUseCases.GetCurrentPublisher
+import com.example.ngkafisha.domain.identityService.userContext.models.Publisher
+import com.example.ngkafisha.presentation.models.states.ActualState
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+import javax.inject.Inject
+
+@HiltViewModel
+class PublisherProfileViewModel @Inject constructor(
+    private val getCurrentPublisher: GetCurrentPublisher
+) : ViewModel() {
+
+    private val _state = MutableStateFlow<ActualState>(ActualState.Loading)
+    val state = _state.asStateFlow()
+
+    private val _publisher = MutableStateFlow<Publisher?>(null)
+    val publisher = _publisher.asStateFlow()
+
+    fun loadPublisherProfile() {
+        viewModelScope.launch {
+            _state.value = ActualState.Loading
+
+            val result = getCurrentPublisher(Unit)
+            if (!result.isSuccess) {
+                _state.value = ActualState.Error(result.errorMessage)
+                return@launch
+            }
+
+            _publisher.value = result.value
+            _state.value = ActualState.Success("")
+        }
+    }
+}
