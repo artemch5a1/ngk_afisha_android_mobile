@@ -11,7 +11,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.ngkafisha.domain.identityService.accountContext.abstractions.service.auth.SessionInfoStore
+import com.example.domain.identityService.accountContext.abstractions.service.auth.SessionInfoStore
 import com.example.ngkafisha.presentation.navigation.BottomBar
 import com.example.ngkafisha.presentation.navigation.NavHost
 import com.example.ngkafisha.presentation.ui.theme.NgkafishaTheme

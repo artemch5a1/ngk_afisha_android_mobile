@@ -1,0 +1,25 @@
+package com.example.application.identityService.userContext.useCases.studentUseCases
+
+import com.example.application.common.base.BaseUseCase
+import com.example.domain.common.models.CustomResult
+import com.example.domain.identityService.accountContext.abstractions.service.auth.SessionStoreService
+import com.example.domain.identityService.userContext.abstractions.repositories.StudentRepository
+import com.example.domain.identityService.userContext.models.Student
+import java.util.UUID
+import javax.inject.Inject
+
+class UpdateStudentUseCase @Inject constructor(
+    private val studentRepository: StudentRepository,
+    sessionStoreService: SessionStoreService
+) : BaseUseCase<UpdateStudentUseCase.Request, UUID>(sessionStoreService) {
+
+
+    override suspend fun invokeLogic(request: Request): CustomResult<UUID> {
+        val response = studentRepository.updateStudent(request.student)
+
+        return CustomResult.Companion.success(response)
+    }
+
+
+    data class Request(val student: Student)
+}

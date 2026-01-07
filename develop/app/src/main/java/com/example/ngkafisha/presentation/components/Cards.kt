@@ -34,13 +34,12 @@ import androidx.core.graphics.toColorInt
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
+import com.example.domain.common.enums.MemberStatus
+import com.example.domain.common.enums.Role
+import com.example.domain.eventService.models.Event
+import com.example.domain.eventService.models.Invitation
+import com.example.domain.eventService.models.Member
 import com.example.ngkafisha.R
-import com.example.ngkafisha.domain.common.enums.MemberStatus
-import com.example.ngkafisha.domain.common.enums.Role
-import com.example.ngkafisha.domain.eventService.models.Event
-import com.example.ngkafisha.domain.eventService.models.Invitation
-import com.example.ngkafisha.domain.eventService.models.Member
-import com.example.ngkafisha.domain.identityService.userContext.models.Student
 import java.time.format.DateTimeFormatter
 
 @Composable

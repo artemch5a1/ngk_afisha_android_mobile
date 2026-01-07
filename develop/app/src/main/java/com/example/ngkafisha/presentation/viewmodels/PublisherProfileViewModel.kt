@@ -2,8 +2,8 @@ package com.example.ngkafisha.presentation.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.ngkafisha.application.identityService.userContext.useCases.publisherUseCases.GetCurrentPublisher
-import com.example.ngkafisha.domain.identityService.userContext.models.Publisher
+import com.example.application.identityService.userContext.useCases.publisherUseCases.GetCurrentPublisher
+import com.example.domain.identityService.userContext.models.Publisher
 import com.example.ngkafisha.presentation.models.states.ActualState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

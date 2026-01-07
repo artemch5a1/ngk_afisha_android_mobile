@@ -5,17 +5,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.ngkafisha.application.eventService.useCases.eventUseCases.CreateEventUseCase
-import com.example.ngkafisha.application.eventService.useCases.eventTypeUseCases.GetAllEventTypesUseCase
-import com.example.ngkafisha.application.eventService.useCases.eventUseCases.GetEventByIdUseCase
-import com.example.ngkafisha.application.eventService.useCases.eventUseCases.UpdateEventUseCase
-import com.example.ngkafisha.application.eventService.useCases.genreUseCases.GetAllGenres
-import com.example.ngkafisha.application.eventService.useCases.locationUseCases.GetAllLocation
-import com.example.ngkafisha.domain.common.models.CustomResult
-import com.example.ngkafisha.domain.eventService.models.Event
-import com.example.ngkafisha.domain.eventService.models.EventType
-import com.example.ngkafisha.domain.eventService.models.Genre
-import com.example.ngkafisha.domain.eventService.models.Location
+import com.example.application.eventService.useCases.eventTypeUseCases.GetAllEventTypesUseCase
+import com.example.application.eventService.useCases.eventUseCases.CreateEventUseCase
+import com.example.application.eventService.useCases.eventUseCases.GetEventByIdUseCase
+import com.example.application.eventService.useCases.eventUseCases.UpdateEventUseCase
+import com.example.application.eventService.useCases.genreUseCases.GetAllGenres
+import com.example.application.eventService.useCases.locationUseCases.GetAllLocation
+import com.example.domain.common.models.CustomResult
+import com.example.domain.eventService.models.Event
+import com.example.domain.eventService.models.EventType
+import com.example.domain.eventService.models.Genre
+import com.example.domain.eventService.models.Location
 import com.example.ngkafisha.presentation.models.states.ActualState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -159,7 +159,7 @@ class CreateOrEditEventViewModel @Inject constructor(
 
             _textPage.value = "Обновление события"
 
-            val result:CustomResult<Event>  = getEventByIdUseCase(
+            val result: CustomResult<Event> = getEventByIdUseCase(
                 GetEventByIdUseCase.Request(id)
             )
 

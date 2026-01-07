@@ -3,11 +3,11 @@ package com.example.ngkafisha.presentation.viewmodels
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.ngkafisha.application.eventService.useCases.eventUseCases.DeleteEventUseCase
-import com.example.ngkafisha.application.eventService.useCases.eventUseCases.GetEventByIdUseCase
-import com.example.ngkafisha.domain.common.models.CustomResult
-import com.example.ngkafisha.domain.eventService.models.Event
-import com.example.ngkafisha.domain.identityService.accountContext.abstractions.service.auth.SessionInfoStore
+import com.example.application.eventService.useCases.eventUseCases.DeleteEventUseCase
+import com.example.application.eventService.useCases.eventUseCases.GetEventByIdUseCase
+import com.example.domain.common.models.CustomResult
+import com.example.domain.eventService.models.Event
+import com.example.domain.identityService.accountContext.abstractions.service.auth.SessionInfoStore
 import com.example.ngkafisha.presentation.models.states.ActualState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

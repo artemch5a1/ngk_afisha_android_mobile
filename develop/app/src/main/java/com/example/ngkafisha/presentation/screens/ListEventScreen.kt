@@ -30,7 +30,7 @@ import androidx.compose.ui.zIndex
 import androidx.core.graphics.toColorInt
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.example.ngkafisha.domain.common.enums.Role
+import com.example.domain.common.enums.Role
 import com.example.ngkafisha.presentation.components.EventCard
 import com.example.ngkafisha.presentation.components.SelectableButtonList
 import com.example.ngkafisha.presentation.components.myFieldSearch

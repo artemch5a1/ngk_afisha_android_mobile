@@ -1,9 +1,0 @@
-package com.example.ngkafisha.data.identityService.accountContext.dto
-
-import kotlinx.serialization.Serializable
-
-@Serializable
-data class LoginRequest(
-    val email: String,
-    val password: String,
-)

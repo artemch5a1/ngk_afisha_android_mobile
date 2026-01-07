@@ -3,9 +3,9 @@ package com.example.ngkafisha.presentation.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.ngkafisha.application.identityService.userContext.useCases.userUseCases.GetCurrentUser
-import com.example.ngkafisha.application.identityService.userContext.useCases.userUseCases.UpdateUserInfoUseCase
-import com.example.ngkafisha.domain.identityService.userContext.models.User
+import com.example.application.identityService.userContext.useCases.userUseCases.GetCurrentUser
+import com.example.application.identityService.userContext.useCases.userUseCases.UpdateUserInfoUseCase
+import com.example.domain.identityService.userContext.models.User
 import com.example.ngkafisha.presentation.models.states.ActualState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

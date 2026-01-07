@@ -7,7 +7,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.ngkafisha.domain.identityService.accountContext.abstractions.service.auth.SessionInfoStore
+import com.example.domain.identityService.accountContext.abstractions.service.auth.SessionInfoStore
 import com.example.ngkafisha.presentation.screens.AboutAppScreen
 import com.example.ngkafisha.presentation.screens.ChangePasswordScreen
 import com.example.ngkafisha.presentation.screens.CreateOrEditEventScreen
@@ -31,7 +31,8 @@ import com.example.ngkafisha.presentation.screens.StudentProfileScreen
 @Composable
 fun NavHost(
     navController: NavHostController,
-    sessionInfoStore: SessionInfoStore) {
+    sessionInfoStore: SessionInfoStore
+) {
 
     DisposableEffect(Unit) {
         val subscription = sessionInfoStore.sessionChanged.subscribe { state ->

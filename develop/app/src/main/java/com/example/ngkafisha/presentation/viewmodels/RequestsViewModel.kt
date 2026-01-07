@@ -3,18 +3,18 @@ package com.example.ngkafisha.presentation.viewmodels
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.ngkafisha.application.eventService.useCases.invitationUseCases.requestManagment.AcceptRequestOnInvitationUseCase
-import com.example.ngkafisha.application.eventService.useCases.invitationUseCases.requestManagment.CancelRequestOnInvitationUseCase
-import com.example.ngkafisha.application.eventService.useCases.invitationUseCases.requestManagment.RejectMemberOnInvitationUseCase
-import com.example.ngkafisha.application.eventService.useCases.memberUseCases.GetAllMemberByAuthorUseCase
-import com.example.ngkafisha.application.eventService.useCases.memberUseCases.GetAllMemberByStudentUseCase
-import com.example.ngkafisha.domain.common.enums.Role
-import com.example.ngkafisha.domain.eventService.contracts.AcceptRequestOnInvitation
-import com.example.ngkafisha.domain.eventService.contracts.CancelRequestOnInvitation
-import com.example.ngkafisha.domain.eventService.contracts.RejectMemberOnInvitation
-import com.example.ngkafisha.domain.eventService.models.Member
-import com.example.ngkafisha.domain.identityService.accountContext.abstractions.service.auth.SessionInfoStore
-import com.example.ngkafisha.domain.identityService.userContext.models.Student
+import com.example.application.eventService.useCases.invitationUseCases.requestManagment.AcceptRequestOnInvitationUseCase
+import com.example.application.eventService.useCases.invitationUseCases.requestManagment.CancelRequestOnInvitationUseCase
+import com.example.application.eventService.useCases.invitationUseCases.requestManagment.RejectMemberOnInvitationUseCase
+import com.example.application.eventService.useCases.memberUseCases.GetAllMemberByAuthorUseCase
+import com.example.application.eventService.useCases.memberUseCases.GetAllMemberByStudentUseCase
+import com.example.domain.common.enums.Role
+import com.example.domain.eventService.contracts.AcceptRequestOnInvitation
+import com.example.domain.eventService.contracts.CancelRequestOnInvitation
+import com.example.domain.eventService.contracts.RejectMemberOnInvitation
+import com.example.domain.eventService.models.Member
+import com.example.domain.identityService.accountContext.abstractions.service.auth.SessionInfoStore
+import com.example.domain.identityService.userContext.models.Student
 import com.example.ngkafisha.presentation.models.states.ActualState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -51,7 +51,8 @@ class RequestsViewModel @Inject constructor(
 
         viewModelScope.launch {
 
-            val response = cancelRequestOnInvitationUseCase(CancelRequestOnInvitationUseCase.Request(
+            val response = cancelRequestOnInvitationUseCase(
+                CancelRequestOnInvitationUseCase.Request(
                 CancelRequestOnInvitation(
                     invId,
                     eventId
@@ -72,7 +73,8 @@ class RequestsViewModel @Inject constructor(
 
         viewModelScope.launch {
 
-            val response = acceptRequestOnInvitationUseCase(AcceptRequestOnInvitationUseCase.Request(
+            val response = acceptRequestOnInvitationUseCase(
+                AcceptRequestOnInvitationUseCase.Request(
                 AcceptRequestOnInvitation(
                     invId,
                     eventId,
@@ -94,7 +96,8 @@ class RequestsViewModel @Inject constructor(
 
         viewModelScope.launch {
 
-            val response = rejectMemberOnInvitationUseCase(RejectMemberOnInvitationUseCase.Request(
+            val response = rejectMemberOnInvitationUseCase(
+                RejectMemberOnInvitationUseCase.Request(
                 RejectMemberOnInvitation(
                     invId,
                     eventId,
