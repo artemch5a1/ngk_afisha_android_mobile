@@ -248,12 +248,14 @@ fun InvitationCard(
 ) {
     val event = member.invitation.event ?: return
 
+    val inv = member.invitation
+
     Row(
         modifier = modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
             .background(Color(0xFFE0E0E0))
-            .padding(12.dp)
+            .padding(10.dp)
     ) {
 
         Image(
@@ -273,7 +275,7 @@ fun InvitationCard(
         ) {
 
             HyperlinkText(
-                text = event.title,
+                text = inv.shortDescription,
                 onClick = onTitleClick
             )
 
