@@ -8,13 +8,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.domain.identityService.accountContext.abstractions.service.auth.SessionInfoStore
 import com.example.ngkafisha.presentation.navigation.BottomBar
 import com.example.ngkafisha.presentation.navigation.NavHost
 import com.example.ngkafisha.presentation.ui.theme.NgkafishaTheme
+import com.example.ngkafisha.presentation.viewmodels.ThemeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -27,7 +31,10 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            NgkafishaTheme {
+            val themeViewModel: ThemeViewModel = hiltViewModel()
+            val isDarkTheme by themeViewModel.isDarkTheme.collectAsState()
+
+            NgkafishaTheme(darkTheme = isDarkTheme) {
                 val navController = rememberNavController()
 
                 val navBackStackEntry = navController.currentBackStackEntryAsState()

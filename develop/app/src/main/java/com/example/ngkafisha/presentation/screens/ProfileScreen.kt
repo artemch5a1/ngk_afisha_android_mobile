@@ -22,6 +22,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -30,7 +31,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -39,6 +39,7 @@ import androidx.navigation.NavController
 import com.example.domain.common.enums.Role
 import com.example.ngkafisha.presentation.models.states.ActualState
 import com.example.ngkafisha.presentation.viewmodels.ProfileScreenViewModel
+import com.example.ngkafisha.presentation.viewmodels.ThemeViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -49,6 +50,8 @@ fun ProfileScreen(
     val state by viewModel.state.collectAsState()
     val account by viewModel.account.collectAsState()
     val user by viewModel.user.collectAsState()
+    val themeViewModel: ThemeViewModel = hiltViewModel()
+    val isDarkTheme by themeViewModel.isDarkTheme.collectAsState()
 
     LaunchedEffect(Unit) {
         viewModel.loadProfile()
@@ -103,7 +106,9 @@ fun ProfileScreen(
                 },
                 onEditProfile = {
                     navController.navigate("editUserProfile")
-                }
+                },
+                isDarkTheme = isDarkTheme,
+                onDarkThemeChange = themeViewModel::setDarkTheme
             )
         }
     }
@@ -119,7 +124,9 @@ fun ProfileContent(
     onStudentProfile: () -> Unit,
     onPublisherProfile: () -> Unit,
     onChangePassword: () -> Unit,
-    onEditProfile: () -> Unit
+    onEditProfile: () -> Unit,
+    isDarkTheme: Boolean,
+    onDarkThemeChange: (Boolean) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -133,13 +140,13 @@ fun ProfileContent(
             modifier = Modifier
                 .size(120.dp)
                 .clip(CircleShape)
-                .background(Color.LightGray),
+                .background(MaterialTheme.colorScheme.surfaceVariant),
             contentAlignment = Alignment.Center
         ) {
             Icon(
                 imageVector = Icons.Default.AccountCircle,
                 contentDescription = "Фото профиля",
-                tint = Color.DarkGray,
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.size(90.dp)
             )
         }
@@ -158,7 +165,7 @@ fun ProfileContent(
             text = accountEmail,
             style = MaterialTheme.typography.bodyMedium,
             fontSize = 14.sp,
-            color = Color.Gray
+            color = MaterialTheme.colorScheme.onSurfaceVariant
         )
 
         Spacer(modifier = Modifier.height(55.dp))
@@ -173,6 +180,25 @@ fun ProfileContent(
         )
 
         Spacer(modifier = Modifier.height(60.dp))
+
+        // Тема
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 24.dp, vertical = 8.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "Тёмная тема",
+                style = MaterialTheme.typography.bodyLarge,
+                fontSize = 18.sp
+            )
+            Spacer(modifier = Modifier.weight(1f))
+            Switch(
+                checked = isDarkTheme,
+                onCheckedChange = onDarkThemeChange
+            )
+        }
 
         // О приложении
         Row(
@@ -275,8 +301,8 @@ fun ProfileContent(
                 .fillMaxWidth(0.8f),
             shape = RoundedCornerShape(30.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFFD9D9D9),
-                contentColor = Color.Black
+                containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                contentColor = MaterialTheme.colorScheme.onSecondaryContainer
             )
         ) {
             Text(text = "Выйти из аккаунта", fontSize = 16.sp)

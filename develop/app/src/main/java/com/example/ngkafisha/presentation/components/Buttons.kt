@@ -11,6 +11,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -33,16 +34,19 @@ fun DefaultButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    containerColor: Color = Color.Red,
-    contentColor: Color = Color.White,
+    containerColor: Color? = null,
+    contentColor: Color? = null,
     fontSize: Int = 18,
     width: Dp = 150.dp
 ) {
+    val resolvedContainerColor = containerColor ?: MaterialTheme.colorScheme.primary
+    val resolvedContentColor = contentColor ?: MaterialTheme.colorScheme.onPrimary
+
     Button(
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
-            containerColor = containerColor,
-            contentColor = contentColor
+            containerColor = resolvedContainerColor,
+            contentColor = resolvedContentColor
         ),
         modifier = modifier.height(50.dp).width(width)
     ) {
@@ -76,7 +80,7 @@ fun StateButton(
             is ActualState.Loading -> {
                 CircularProgressIndicator(
                     modifier = circularProgressModifier.size(48.dp),
-                    color = Color.Blue,
+                    color = MaterialTheme.colorScheme.primary,
                     strokeWidth = 4.dp
                 )
             }
@@ -89,7 +93,7 @@ fun StateButton(
                 )
                 LimitedText(
                     message = actualState.message,
-                    color = Color.Red,
+                    color = MaterialTheme.colorScheme.error,
                     modifier = textModifier.padding(top = 8.dp).width(240.dp)
                 )
             }
@@ -103,7 +107,7 @@ fun StateButton(
                     )
                     LimitedText(
                         message = actualState.message,
-                        color = Color.Green,
+                        color = MaterialTheme.colorScheme.tertiary,
                         modifier = textModifier.padding(top = 8.dp).width(240.dp)
                     )
                 }
@@ -126,8 +130,8 @@ fun TypeBut(typeEv: EventType?, isSelected: Boolean, OnClick: () -> Unit) {
         modifier = Modifier
             .padding(vertical = 16.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = if (isSelectesNow) Color.Blue else Color.Gray,
-            contentColor = Color.White
+            containerColor = if (isSelectesNow) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant,
+            contentColor = if (isSelectesNow) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant
         )
     ) {
         Text(typeEv?.title ?: "", fontSize = 18.sp)
@@ -148,8 +152,8 @@ fun <T : IHaveTitle> SelectableButton(
             onClick()
         },
         colors = ButtonDefaults.buttonColors(
-            containerColor = if (isSelectedNow) Color.Gray else Color.Red,
-            contentColor = Color.White
+            containerColor = if (isSelectedNow) MaterialTheme.colorScheme.surfaceVariant else MaterialTheme.colorScheme.primary,
+            contentColor = if (isSelectedNow) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.onPrimary
         ),
         modifier = Modifier.padding(vertical = 8.dp)
     ) {

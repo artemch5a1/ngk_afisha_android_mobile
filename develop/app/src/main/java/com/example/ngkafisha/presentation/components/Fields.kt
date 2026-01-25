@@ -27,7 +27,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.graphics.toColorInt
 import com.example.ngkafisha.R
 import java.time.LocalDateTime
 import java.time.LocalTime
@@ -36,8 +35,10 @@ import java.util.Locale
 
 private val FieldShape = RoundedCornerShape(40.dp)
 private val FieldModifier = Modifier.width(310.dp).height(50.dp)
-private val LabelTextStyle = TextStyle(
-    color = Color("#E4E0E0".toColorInt()),
+
+@Composable
+private fun labelTextStyle(): TextStyle = TextStyle(
+    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f),
     fontWeight = FontWeight.Bold,
     fontSize = 16.sp,
     background = Color.Transparent,
@@ -54,7 +55,7 @@ fun DefaultField(
     OutlinedTextField(
         value = text,
         onValueChange = onValueChange,
-        placeholder = { Text(label, style = LabelTextStyle) },
+        placeholder = { Text(label, style = labelTextStyle()) },
         shape = FieldShape,
         modifier = modifier?.width(310.dp) ?:
         FieldModifier,
@@ -74,19 +75,19 @@ fun EventSearchField(
     OutlinedTextField(
         value = text,
         onValueChange = onValueChange,
-        placeholder = { Text(label,
-            fontSize = 15.sp,
-            color = Color("#897979".toColorInt()), fontWeight = FontWeight.Bold) },
+        placeholder = {
+            Text(
+                label,
+                fontSize = 15.sp,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                fontWeight = FontWeight.Bold
+            )
+        },
         shape = RoundedCornerShape(15.dp),
         modifier = modifier?.width(310.dp) ?:
         FieldModifier,
         enabled = enabled,
-        colors = TextFieldDefaults.colors(
-            focusedContainerColor = Color("#D9D9D9".toColorInt()),
-            unfocusedContainerColor = Color("#D9D9D9".toColorInt()),
-            unfocusedIndicatorColor = Color("#D9D9D9".toColorInt()),
-            focusedIndicatorColor = Color("#D9D9D9".toColorInt()),
-        )
+        colors = fieldColors()
     )
 }
 
@@ -102,7 +103,7 @@ fun PasswordField(
     OutlinedTextField(
         value = text,
         onValueChange = onValueChange,
-        placeholder = { Text(label, style = LabelTextStyle) },
+        placeholder = { Text(label, style = labelTextStyle()) },
         shape = FieldShape,
         modifier = modifier?.width(310.dp) ?:
         FieldModifier,
@@ -130,7 +131,7 @@ fun HyperlinkText(
     Text(
         text = text,
         fontSize = 16.sp,
-        color = Color(0xFF1A73E8),
+        color = MaterialTheme.colorScheme.primary,
         fontWeight = FontWeight.W400,
         textDecoration = TextDecoration.Underline,
         modifier = modifier.clickable { onClick() }
@@ -160,12 +161,7 @@ fun myFieldSearch(myText: String, text: String, onValueChange: (String) -> Unit,
     var passSee by remember { mutableStateOf(false) }
 
     OutlinedTextField(
-        colors = TextFieldDefaults.colors(
-            focusedContainerColor = Color.White,
-            unfocusedContainerColor = Color.White,
-            unfocusedIndicatorColor = Color.White,
-            focusedIndicatorColor = Color.White,
-        ),
+        colors = fieldColors(),
         value = text,
         onValueChange = onValueChange,
         label = { Text(myText) },
@@ -187,12 +183,13 @@ fun DateTimeText(
     eventDate: LocalDateTime?,
     modifier: Modifier = Modifier,
     fontSize: TextUnit = 15.sp,
-    color: Color = Color.Black) {
+    color: Color? = null
+) {
     val formatter = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm", Locale.getDefault())
     Text(
         text = eventDate?.format(formatter) ?: "",
         fontSize = fontSize,
-        color = color,
+        color = color ?: MaterialTheme.colorScheme.onBackground,
         fontWeight = FontWeight.W800,
         modifier = modifier
             .padding(bottom = 16.dp)
@@ -225,22 +222,22 @@ fun CustomTimePickerField(
         OutlinedTextField(
             value = displayText,
             onValueChange = {},
-            placeholder = { Text(label, style = LabelTextStyle) },
+            placeholder = { Text(label, style = labelTextStyle()) },
             readOnly = true,
             enabled = false,
             shape = FieldShape,
             colors = TextFieldDefaults.colors(
-                focusedContainerColor = Color("#A9A9A9".toColorInt()),
-                unfocusedContainerColor = Color("#A9A9A9".toColorInt()),
-                unfocusedIndicatorColor = Color("#A9A9A9".toColorInt()),
-                focusedIndicatorColor = Color("#A9A9A9".toColorInt()),
-                disabledContainerColor = Color("#A9A9A9".toColorInt()),
-                disabledIndicatorColor = Color("#A9A9A9".toColorInt()),
-                disabledSupportingTextColor = Color.Black,
-                disabledTextColor = Color.Black,
-                errorSupportingTextColor = Color.Black,
-                focusedTextColor = Color.Black,
-                unfocusedTextColor = Color.Black
+                focusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+                unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+                unfocusedIndicatorColor = MaterialTheme.colorScheme.outlineVariant,
+                focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+                disabledContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+                disabledIndicatorColor = MaterialTheme.colorScheme.outlineVariant,
+                disabledSupportingTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                disabledTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                errorSupportingTextColor = MaterialTheme.colorScheme.error,
+                focusedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                unfocusedTextColor = MaterialTheme.colorScheme.onSurfaceVariant
             ),
             modifier = Modifier.fillMaxWidth()
         )
@@ -249,8 +246,14 @@ fun CustomTimePickerField(
 
 @Composable
 private fun fieldColors() = TextFieldDefaults.colors(
-    focusedContainerColor = Color("#A9A9A9".toColorInt()),
-    unfocusedContainerColor = Color("#A9A9A9".toColorInt()),
-    unfocusedIndicatorColor = Color("#A9A9A9".toColorInt()),
-    focusedIndicatorColor = Color("#A9A9A9".toColorInt())
+    focusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+    unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+    disabledContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+    focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+    unfocusedIndicatorColor = MaterialTheme.colorScheme.outlineVariant,
+    disabledIndicatorColor = MaterialTheme.colorScheme.outlineVariant,
+    focusedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+    unfocusedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+    disabledTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+    cursorColor = MaterialTheme.colorScheme.primary
 )
