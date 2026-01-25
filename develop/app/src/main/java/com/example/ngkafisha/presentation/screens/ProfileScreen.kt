@@ -22,7 +22,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -39,7 +38,6 @@ import androidx.navigation.NavController
 import com.example.domain.common.enums.Role
 import com.example.ngkafisha.presentation.models.states.ActualState
 import com.example.ngkafisha.presentation.viewmodels.ProfileScreenViewModel
-import com.example.ngkafisha.presentation.viewmodels.ThemeViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -50,8 +48,6 @@ fun ProfileScreen(
     val state by viewModel.state.collectAsState()
     val account by viewModel.account.collectAsState()
     val user by viewModel.user.collectAsState()
-    val themeViewModel: ThemeViewModel = hiltViewModel()
-    val isDarkTheme by themeViewModel.isDarkTheme.collectAsState()
 
     LaunchedEffect(Unit) {
         viewModel.loadProfile()
@@ -107,8 +103,9 @@ fun ProfileScreen(
                 onEditProfile = {
                     navController.navigate("editUserProfile")
                 },
-                isDarkTheme = isDarkTheme,
-                onDarkThemeChange = themeViewModel::setDarkTheme
+                onAppearance = {
+                    navController.navigate("appearanceScreen")
+                }
             )
         }
     }
@@ -121,12 +118,11 @@ fun ProfileContent(
     fullName: String,
     onLogout: () -> Unit,
     onAbout: () -> Unit,
+    onAppearance: () -> Unit,
     onStudentProfile: () -> Unit,
     onPublisherProfile: () -> Unit,
     onChangePassword: () -> Unit,
-    onEditProfile: () -> Unit,
-    isDarkTheme: Boolean,
-    onDarkThemeChange: (Boolean) -> Unit
+    onEditProfile: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -181,22 +177,23 @@ fun ProfileContent(
 
         Spacer(modifier = Modifier.height(60.dp))
 
-        // Тема
+        // Внешний вид
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 24.dp, vertical = 8.dp),
+                .clickable { onAppearance() }
+                .padding(horizontal = 24.dp, vertical = 16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "Тёмная тема",
+                text = "Внешний вид",
                 style = MaterialTheme.typography.bodyLarge,
                 fontSize = 18.sp
             )
             Spacer(modifier = Modifier.weight(1f))
-            Switch(
-                checked = isDarkTheme,
-                onCheckedChange = onDarkThemeChange
+            Icon(
+                imageVector = Icons.Default.KeyboardArrowRight,
+                contentDescription = null
             )
         }
 

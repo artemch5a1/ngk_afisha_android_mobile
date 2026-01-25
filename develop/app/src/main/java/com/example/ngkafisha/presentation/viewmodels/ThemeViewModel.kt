@@ -3,6 +3,7 @@ package com.example.ngkafisha.presentation.viewmodels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ngkafisha.presentation.settings.ThemeRepository
+import com.example.ngkafisha.presentation.settings.ThemeMode
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -15,16 +16,16 @@ class ThemeViewModel @Inject constructor(
     private val themeRepository: ThemeRepository
 ) : ViewModel() {
 
-    val isDarkTheme: StateFlow<Boolean> =
-        themeRepository.isDarkTheme.stateIn(
+    val themeMode: StateFlow<ThemeMode> =
+        themeRepository.themeMode.stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = false
+            initialValue = ThemeMode.SYSTEM
         )
 
-    fun setDarkTheme(enabled: Boolean) {
+    fun setThemeMode(mode: ThemeMode) {
         viewModelScope.launch {
-            themeRepository.setDarkTheme(enabled)
+            themeRepository.setThemeMode(mode)
         }
     }
 }

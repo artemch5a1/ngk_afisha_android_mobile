@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -17,6 +18,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.domain.identityService.accountContext.abstractions.service.auth.SessionInfoStore
 import com.example.ngkafisha.presentation.navigation.BottomBar
 import com.example.ngkafisha.presentation.navigation.NavHost
+import com.example.ngkafisha.presentation.settings.ThemeMode
 import com.example.ngkafisha.presentation.ui.theme.NgkafishaTheme
 import com.example.ngkafisha.presentation.viewmodels.ThemeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,7 +34,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val themeViewModel: ThemeViewModel = hiltViewModel()
-            val isDarkTheme by themeViewModel.isDarkTheme.collectAsState()
+            val themeMode by themeViewModel.themeMode.collectAsState()
+            val isDarkTheme = when (themeMode) {
+                ThemeMode.DARK -> true
+                ThemeMode.LIGHT -> false
+                ThemeMode.SYSTEM -> isSystemInDarkTheme()
+            }
 
             NgkafishaTheme(darkTheme = isDarkTheme) {
                 val navController = rememberNavController()
@@ -47,6 +54,7 @@ class MainActivity : ComponentActivity() {
                     "signUp",
                     "createEventScreen",
                     "studentProfile",
+                    "appearanceScreen",
                     "aboutScreen",
                     "publisherProfile",
                     "changePassword",

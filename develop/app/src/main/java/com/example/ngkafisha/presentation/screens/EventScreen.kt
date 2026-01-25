@@ -37,7 +37,6 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.graphics.toColorInt
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.domain.common.enums.Role
@@ -123,7 +122,7 @@ fun EventScreen(
         is ActualState.Error ->{
             Text(
                 text = (actualState as ActualState.Error).message,
-                color = Color.White,
+                color = MaterialTheme.colorScheme.error,
                 style = MaterialTheme.typography.titleLarge.copy(
                     fontWeight = FontWeight.Bold,
                     fontSize = 10.sp,
@@ -188,23 +187,41 @@ fun EventScreen(
                                 ) {
                                     Box(
                                         modifier = Modifier
-                                            .background(Color(0xFFE5E5E5), RoundedCornerShape(16.dp))
+                                            .background(
+                                                MaterialTheme.colorScheme.surfaceVariant,
+                                                RoundedCornerShape(16.dp)
+                                            )
                                             .padding(12.dp)
                                     ) {
                                         Column {
-                                            Text("Жанр", color = Color.Black.copy(alpha = 0.6f))
-                                            Text("${eventCard?.genre?.title}")
+                                            Text(
+                                                "Жанр",
+                                                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f)
+                                            )
+                                            Text(
+                                                "${eventCard?.genre?.title}",
+                                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                                            )
                                         }
                                     }
 
                                     Box(
                                         modifier = Modifier
-                                            .background(Color(0xFFE5E5E5), RoundedCornerShape(16.dp))
+                                            .background(
+                                                MaterialTheme.colorScheme.surfaceVariant,
+                                                RoundedCornerShape(16.dp)
+                                            )
                                             .padding(12.dp)
                                     ) {
                                         Column {
-                                            Text("Возраст", color = Color.Black.copy(alpha = 0.6f))
-                                            Text("${eventCard?.minAge}+")
+                                            Text(
+                                                "Возраст",
+                                                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f)
+                                            )
+                                            Text(
+                                                "${eventCard?.minAge}+",
+                                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                                            )
                                         }
                                     }
                                 }
@@ -219,7 +236,7 @@ fun EventScreen(
                                         modifier = Modifier
                                             .fillMaxWidth()
                                             .background(
-                                                color = Color(0xFFE5E5E5),
+                                                color = MaterialTheme.colorScheme.surfaceVariant,
                                                 shape = RoundedCornerShape(16.dp)
                                             )
                                             .padding(horizontal = 12.dp, vertical = 8.dp)
@@ -227,7 +244,7 @@ fun EventScreen(
                                         Icon(
                                             imageVector = Icons.Default.Place,
                                             contentDescription = "Локация",
-                                            tint = Color(0xFF007926),
+                                            tint = MaterialTheme.colorScheme.tertiary,
                                             modifier = Modifier.padding(end = 8.dp)
                                         )
                                         Column {
@@ -237,14 +254,15 @@ fun EventScreen(
                                                     fontWeight = FontWeight.Bold,
                                                     fontSize = 18.sp
                                                 ),
-                                                color = Color.Black.copy(alpha = 0.6f)
+                                                color = MaterialTheme.colorScheme.onSurfaceVariant
                                             )
                                             Text(
                                                 text = location.address,
                                                 style = MaterialTheme.typography.bodyMedium.copy(
                                                     fontWeight = FontWeight.Normal,
                                                     fontSize = 14.sp
-                                                )
+                                                ),
+                                                color = MaterialTheme.colorScheme.onSurfaceVariant
                                             )
                                         }
                                     }
@@ -255,7 +273,7 @@ fun EventScreen(
                                         Spacer(Modifier.padding(10.dp))
                                         Text(
                                             text = eventCard.description,
-                                            color = Color.Black,
+                                            color = MaterialTheme.colorScheme.onBackground,
                                             style = MaterialTheme.typography.titleLarge.copy(
                                                 fontSize = 15.sp,
                                                 shadow = Shadow(
@@ -276,8 +294,8 @@ fun EventScreen(
                                                 controlNav.navigate("createInvitation/${eventId}")
                                             },
                                             colors = ButtonDefaults.buttonColors(
-                                                containerColor = Color("#007926".toColorInt()),
-                                                contentColor = Color.White
+                                                containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                                                contentColor = MaterialTheme.colorScheme.onTertiaryContainer
                                             ),
                                             modifier = Modifier
                                         ) {
@@ -292,8 +310,8 @@ fun EventScreen(
                                                 controlNav.navigate("updateEventScreen/${eventId}")
                                             },
                                             colors = ButtonDefaults.buttonColors(
-                                                containerColor = Color("#007926".toColorInt()),
-                                                contentColor = Color.White
+                                                containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                                                contentColor = MaterialTheme.colorScheme.onTertiaryContainer
                                             ),
                                             modifier = Modifier
                                         ) {
@@ -308,8 +326,8 @@ fun EventScreen(
                                                 showConfirmationDialog = true
                                             },
                                             colors = ButtonDefaults.buttonColors(
-                                                containerColor = Color.Red,
-                                                contentColor = Color.White
+                                                containerColor = MaterialTheme.colorScheme.error,
+                                                contentColor = MaterialTheme.colorScheme.onError
                                             ),
                                             modifier = Modifier
                                         ) {

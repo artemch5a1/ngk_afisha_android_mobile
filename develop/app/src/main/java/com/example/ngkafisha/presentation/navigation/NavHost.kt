@@ -9,6 +9,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.domain.identityService.accountContext.abstractions.service.auth.SessionInfoStore
 import com.example.ngkafisha.presentation.screens.AboutAppScreen
+import com.example.ngkafisha.presentation.screens.AppearanceScreen
 import com.example.ngkafisha.presentation.screens.ChangePasswordScreen
 import com.example.ngkafisha.presentation.screens.CreateOrEditEventScreen
 import com.example.ngkafisha.presentation.screens.CreateOrEditInvitationScreen
@@ -70,6 +71,8 @@ fun NavHost(
         composable("studentProfile") {
             StudentProfileScreen(navController)
         }
+
+        composable("appearanceScreen") { AppearanceScreen(navController) }
 
         composable("publisherProfile") {
             PublisherProfileScreen(navController)
