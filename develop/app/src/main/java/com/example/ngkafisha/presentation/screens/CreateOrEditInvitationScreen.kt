@@ -77,7 +77,7 @@ fun CreateOrEditInvitationScreen(
                     Icon(
                         painter = painterResource(R.drawable.ic_back),
                         contentDescription = "Назад",
-                        tint = Color.Black
+                        tint = MaterialTheme.colorScheme.onBackground
                     )
                 }
             }
