@@ -90,8 +90,8 @@ jobs:
           arch: x86_64
           profile: Nexus 6
           script: |
-            cd develop
-            ./gradlew connectedAndroidTest --no-daemon
+            chmod +x ${{ github.workspace }}/develop/gradlew
+            cd ${{ github.workspace }}/develop && ./gradlew connectedAndroidTest --no-daemon
       
       - name: Upload test results
         if: always()
