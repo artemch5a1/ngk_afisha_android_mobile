@@ -50,6 +50,14 @@ class AccountRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun getCurrentAccountByToken(accessToken: String): Account {
+        return safeApiCall {
+            val response = identityApi.getCurrentAccountByTokenAsync("Bearer $accessToken")
+
+            AccountMapper.toDomain(response)
+        }
+    }
+
     override suspend fun changeAccountPassword(changePassword: ChangePassword): UUID {
         return safeApiCall {
 

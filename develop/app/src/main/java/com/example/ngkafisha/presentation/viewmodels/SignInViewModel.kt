@@ -4,11 +4,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavHostController
+import com.example.application.identityService.accountContext.services.auth.Session
 import com.example.application.identityService.accountContext.useCases.LoginUseCase
 import com.example.domain.common.models.CustomResult
 import com.example.domain.identityService.accountContext.models.AccountSession
 import com.example.ngkafisha.presentation.models.states.ActualState
 import com.example.ngkafisha.presentation.models.states.SignInState
+import com.example.ngkafisha.presentation.settings.SessionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,7 +20,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SignInViewModel @Inject constructor(
-    private val loginUseCase: LoginUseCase
+    private val loginUseCase: LoginUseCase,
+    private val session: Session,
+    private val sessionRepository: SessionRepository
 ) : ViewModel() {
 
     private val _actualState = MutableStateFlow<ActualState>(ActualState.Initialized)
@@ -27,14 +31,21 @@ class SignInViewModel @Inject constructor(
     private val _signInState = mutableStateOf(SignInState())
     val signInState: SignInState get() = _signInState.value
 
+    init {
+        // Загружаем сохранённые данные при инициализации
+        viewModelScope.launch {
+            val savedEmail = sessionRepository.getSavedEmail() ?: ""
+            val savedPassword = sessionRepository.getSavedPassword() ?: ""
+            _signInState.value = SignInState(email = savedEmail, password = savedPassword)
+        }
+    }
+
     fun updateSign(newSign: SignInState){
         _signInState.value = newSign
     }
 
     fun setErrorState(message: String){
-
         _actualState.value = ActualState.Error(message)
-
     }
 
     fun signIn(controlNav: NavHostController) {
@@ -44,8 +55,16 @@ class SignInViewModel @Inject constructor(
             val customResult: CustomResult<AccountSession> =
                 loginUseCase(LoginUseCase.Request(signInState.email, signInState.password))
 
-            if(customResult.isSuccess)
+            if(customResult.isSuccess && customResult.value != null)
             {
+                // Сохраняем сессию с учётными данными
+                val accountSession = customResult.value!!
+                session.setSessionWithCredentials(
+                    accountSession,
+                    signInState.email,
+                    signInState.password
+                )
+
                 _actualState.value = ActualState.Success("")
                 controlNav.navigate("listEventScreen") {
                     popUpTo("signIn") { inclusive = true }

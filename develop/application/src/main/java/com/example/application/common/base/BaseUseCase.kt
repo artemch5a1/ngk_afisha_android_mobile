@@ -16,7 +16,11 @@ abstract class BaseUseCase<TRequest, TResponse>(protected val sessionStoreServic
         catch (ex: ApiException) {
 
             if(ex.code == 401){
-                sessionStoreService.resetSession("Сессия была завершена, пожалуйста войдите заново")
+                if (sessionStoreService is com.example.application.identityService.accountContext.services.auth.Session) {
+                    sessionStoreService.resetSessionWithClear("Сессия была завершена, пожалуйста войдите заново")
+                } else {
+                    sessionStoreService.resetSession("Сессия была завершена, пожалуйста войдите заново")
+                }
             }
 
             CustomResult.failure(ex, codeMessageMap)

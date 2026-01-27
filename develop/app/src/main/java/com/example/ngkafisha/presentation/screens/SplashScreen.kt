@@ -17,10 +17,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
@@ -31,18 +34,25 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.ngkafisha.R
+import com.example.ngkafisha.presentation.viewmodels.SplashViewModel
 import kotlinx.coroutines.delay
 
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
-fun SplashScreen(controlNav: NavHostController) {
+fun SplashScreen(controlNav: NavHostController, viewModel: SplashViewModel = hiltViewModel()) {
     val rotation = remember { Animatable(0f) }
+    val isLoading by viewModel.isLoading.collectAsState()
+    val shouldNavigateToLogin by viewModel.shouldNavigateToLogin.collectAsState()
+    val shouldNavigateToHome by viewModel.shouldNavigateToHome.collectAsState()
 
-    // Запуск анимации
     LaunchedEffect(Unit) {
-        // 1. Анимация загрузки
+        viewModel.checkSession()
+    }
+
+    LaunchedEffect(Unit) {
         rotation.animateTo(
             targetValue = 360f,
             animationSpec = repeatable(
@@ -51,13 +61,23 @@ fun SplashScreen(controlNav: NavHostController) {
                 repeatMode = RepeatMode.Restart
             )
         )
+    }
 
-        // 2. Задержка для демонстрации анимации
-        delay(2500L)
-
-        // 4. Навигация в зависимости от результата
-        controlNav.navigate("signIn") {
-            popUpTo("splash") { inclusive = true }
+    LaunchedEffect(shouldNavigateToLogin, shouldNavigateToHome) {
+        if (!isLoading) {
+            delay(500L)
+            when {
+                shouldNavigateToHome -> {
+                    controlNav.navigate("listEventScreen") {
+                        popUpTo("splash") { inclusive = true }
+                    }
+                }
+                shouldNavigateToLogin -> {
+                    controlNav.navigate("signIn") {
+                        popUpTo("splash") { inclusive = true }
+                    }
+                }
+            }
         }
     }
 
@@ -81,7 +101,7 @@ fun SplashScreen(controlNav: NavHostController) {
                     modifier = Modifier
                         .size(200.dp)
                         .graphicsLayer {
-                            rotationZ = rotation.value // Применяем анимацию вращения
+                            rotationZ = rotation.value
                         })
 
                 Spacer(modifier = Modifier.padding(16.dp))
@@ -89,14 +109,14 @@ fun SplashScreen(controlNav: NavHostController) {
                 Text(
                     text = "NGKAfisha",
                     style = TextStyle(
-                        fontSize = 20.sp, // Размер шрифта
-                        fontFamily = FontFamily.SansSerif, // Шрифт
-                        fontWeight = FontWeight.Bold, // Жирный шрифт
-                        textAlign = TextAlign.Center, // Выравнивание текста по центру
-                        color = MaterialTheme.colorScheme.onBackground // Цвет текста
+                        fontSize = 20.sp,
+                        fontFamily = FontFamily.SansSerif,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center,
+                        color = MaterialTheme.colorScheme.onBackground
                     ),
                     modifier = Modifier
-                        .fillMaxWidth(0.8f) // Занимает 80% ширины экрана
+                        .fillMaxWidth(0.8f)
                 )
             }
 
