@@ -10,6 +10,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
@@ -26,15 +27,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.graphics.toColorInt
 import com.example.domain.identityService.userContext.models.Group
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
 
 private val FieldShape = RoundedCornerShape(40.dp)
-private val LabelTextStyle = TextStyle(
-    color = Color("#E4E0E0".toColorInt()),
+
+@Composable
+private fun labelTextStyle(): TextStyle = TextStyle(
+    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f),
     fontWeight = FontWeight.Bold,
     fontSize = 16.sp,
     background = Color.Transparent,
@@ -57,20 +59,8 @@ fun GroupDropdownField(
             value = displayText,
             onValueChange = {},  // Запрещаем ручное редактирование
             readOnly = true,     // Только выбор из списка
-            placeholder = { Text(label, style = LabelTextStyle) },
-            colors = TextFieldDefaults.colors(
-                focusedContainerColor = Color("#A9A9A9".toColorInt()),
-                unfocusedContainerColor = Color("#A9A9A9".toColorInt()),
-                unfocusedIndicatorColor = Color("#A9A9A9".toColorInt()),
-                focusedIndicatorColor = Color("#A9A9A9".toColorInt()),
-                disabledContainerColor = Color("#A9A9A9".toColorInt()),
-                disabledIndicatorColor = Color("#A9A9A9".toColorInt()),
-                disabledSupportingTextColor = Color.Black,
-                disabledTextColor = Color.Black,
-                errorSupportingTextColor = Color.Black,
-                focusedTextColor = Color.Black,
-                unfocusedTextColor = Color.Black
-            ),
+            placeholder = { Text(label, style = labelTextStyle()) },
+            colors = fieldColors(),
             shape = FieldShape,
             enabled = false,
             modifier = textModifier
@@ -89,7 +79,13 @@ fun GroupDropdownField(
                 item {
                     groups.forEach { group ->
                         DropdownMenuItem(
-                            text = { Text(group.fullName, style = LabelTextStyle, color = Color.Black) },
+                            text = {
+                                Text(
+                                    group.fullName,
+                                    style = labelTextStyle(),
+                                    color = MaterialTheme.colorScheme.onSurface
+                                )
+                            },
                             onClick = {
                                 onGroupSelected(group)
                                 expanded = false
@@ -122,20 +118,8 @@ fun <T> DropdownField(
             readOnly = true,
             singleLine = false,
             maxLines = 2,
-            placeholder = { Text(label, style = LabelTextStyle, overflow = TextOverflow.Ellipsis) },
-            colors = TextFieldDefaults.colors(
-                focusedContainerColor = Color("#A9A9A9".toColorInt()),
-                unfocusedContainerColor = Color("#A9A9A9".toColorInt()),
-                unfocusedIndicatorColor = Color("#A9A9A9".toColorInt()),
-                focusedIndicatorColor = Color("#A9A9A9".toColorInt()),
-                disabledContainerColor = Color("#A9A9A9".toColorInt()),
-                disabledIndicatorColor = Color("#A9A9A9".toColorInt()),
-                disabledSupportingTextColor = Color.Black,
-                disabledTextColor = Color.Black,
-                errorSupportingTextColor = Color.Black,
-                focusedTextColor = Color.Black,
-                unfocusedTextColor = Color.Black
-            ),
+            placeholder = { Text(label, style = labelTextStyle(), overflow = TextOverflow.Ellipsis) },
+            colors = fieldColors(),
             shape = FieldShape,
             enabled = false,
             modifier = textModifier.width(310.dp)
@@ -154,7 +138,14 @@ fun <T> DropdownField(
                 item {
                     items.forEach { group ->
                         DropdownMenuItem(
-                            text = { Text(displayMember(group), style = LabelTextStyle, color = Color.Black, modifier = Modifier.fillMaxWidth()) },
+                            text = {
+                                Text(
+                                    displayMember(group),
+                                    style = labelTextStyle(),
+                                    color = MaterialTheme.colorScheme.onSurface,
+                                    modifier = Modifier.fillMaxWidth()
+                                )
+                            },
                             onClick = {
                                 onItemSelected(group)
                                 expanded = false
@@ -171,10 +162,16 @@ fun <T> DropdownField(
 
 @Composable
 private fun fieldColors() = TextFieldDefaults.colors(
-    focusedContainerColor = Color("#A9A9A9".toColorInt()),
-    unfocusedContainerColor = Color("#A9A9A9".toColorInt()),
-    unfocusedIndicatorColor = Color("#A9A9A9".toColorInt()),
-    focusedIndicatorColor = Color("#A9A9A9".toColorInt())
+    focusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+    unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+    disabledContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+    focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+    unfocusedIndicatorColor = MaterialTheme.colorScheme.outlineVariant,
+    disabledIndicatorColor = MaterialTheme.colorScheme.outlineVariant,
+    focusedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+    unfocusedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+    disabledTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+    cursorColor = MaterialTheme.colorScheme.primary
 )
 
 @Composable
@@ -206,20 +203,8 @@ fun DatePickerField(
             value = displayText,
             onValueChange = {},
             readOnly = true,
-            placeholder = { Text(label, style = LabelTextStyle) },
-            colors = TextFieldDefaults.colors(
-                focusedContainerColor = Color("#A9A9A9".toColorInt()),
-                unfocusedContainerColor = Color("#A9A9A9".toColorInt()),
-                unfocusedIndicatorColor = Color("#A9A9A9".toColorInt()),
-                focusedIndicatorColor = Color("#A9A9A9".toColorInt()),
-                disabledContainerColor = Color("#A9A9A9".toColorInt()),
-                disabledIndicatorColor = Color("#A9A9A9".toColorInt()),
-                disabledSupportingTextColor = Color.Black,
-                disabledTextColor = Color.Black,
-                errorSupportingTextColor = Color.Black,
-                focusedTextColor = Color.Black,
-                unfocusedTextColor = Color.Black
-            ),
+            placeholder = { Text(label, style = labelTextStyle()) },
+            colors = fieldColors(),
             shape = FieldShape,
             enabled = false,
             modifier = textModifier

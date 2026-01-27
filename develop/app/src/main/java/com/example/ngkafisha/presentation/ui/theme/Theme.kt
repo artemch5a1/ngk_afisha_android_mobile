@@ -1,42 +1,71 @@
 package com.example.ngkafisha.presentation.ui.theme
 
 import android.os.Build
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.core.graphics.toColorInt
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = PrimaryRedDark,
+    onPrimary = Color.White,
+    secondary = CardGrayDark,
+    onSecondary = Color.White,
+    tertiary = SuccessGreenDark,
+    onTertiary = Color.White,
+    tertiaryContainer = Color("#007926".toColorInt()),
+    onTertiaryContainer = Color.Black,
+    background = BackgroundDark,
+    onBackground = OnBackgroundDark,
+    surface = BackgroundDark,
+    onSurface = OnBackgroundDark,
+    surfaceVariant = FieldGrayDark,
+    onSurfaceVariant = Color.White,
+    outline = FieldGrayDark,
+    outlineVariant = CardGrayDark,
+    error = Color("#FF0000".toColorInt()),
+    onError = Color.Black,
+    errorContainer = Color(0xFF93000A),
+    onErrorContainer = Color(0xFFFFDAD6),
+    secondaryContainer = SurfaceGrayDark,
+    onSecondaryContainer = Color.White
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
+    primary = PrimaryRed,
     onPrimary = Color.White,
-    onSecondary = Color.White,
+    secondary = CardGray,
+    onSecondary = Color.Black,
+    tertiary = SuccessGreen,
     onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    tertiaryContainer = Color("#007926".toColorInt()),
+    onTertiaryContainer = Color.Black,
+    background = BackgroundLight,
+    onBackground = OnBackgroundLight,
+    surface = BackgroundLight,
+    onSurface = OnBackgroundLight,
+    surfaceVariant = FieldGray,
+    onSurfaceVariant = Color.Black,
+    outline = FieldGray,
+    outlineVariant = SurfaceGray,
+    error = Color("#FF0000".toColorInt()),
+    onError = Color.Black,
+    errorContainer = Color(0xFFFFDAD6),
+    onErrorContainer = Color(0xFF410002),
+    secondaryContainer = SurfaceGray,
+    onSecondaryContainer = Color.Black
 )
 
 @Composable
 fun NgkafishaTheme(
     darkTheme: Boolean = false,
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    // Dynamic color отключен, используем кастомные цвета
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {

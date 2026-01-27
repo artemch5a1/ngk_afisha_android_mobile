@@ -23,7 +23,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -90,7 +89,7 @@ fun RequestsScreen(
             is ActualState.Error -> {
                 Text(
                     text = (state as ActualState.Error).message,
-                    color = Color.Red,
+                    color = MaterialTheme.colorScheme.error,
                     modifier = Modifier.padding(16.dp)
                 )
             }
@@ -164,7 +163,7 @@ private fun EmptyInvitationsState(selectedTabIndex: Int) {
         Text(
             text = text,
             style = MaterialTheme.typography.bodyLarge,
-            color = Color.Gray
+            color = MaterialTheme.colorScheme.onSurfaceVariant
         )
     }
 }

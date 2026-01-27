@@ -23,7 +23,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -94,7 +93,7 @@ fun SplashScreen(controlNav: NavHostController) {
                         fontFamily = FontFamily.SansSerif, // Шрифт
                         fontWeight = FontWeight.Bold, // Жирный шрифт
                         textAlign = TextAlign.Center, // Выравнивание текста по центру
-                        color = Color.Black // Цвет текста
+                        color = MaterialTheme.colorScheme.onBackground // Цвет текста
                     ),
                     modifier = Modifier
                         .fillMaxWidth(0.8f) // Занимает 80% ширины экрана

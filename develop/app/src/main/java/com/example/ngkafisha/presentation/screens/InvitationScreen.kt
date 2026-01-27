@@ -33,7 +33,6 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.graphics.toColorInt
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.domain.common.enums.Role
@@ -133,7 +132,7 @@ fun InvitationScreen(
                 Box(Modifier.fillMaxSize(), Alignment.Center) {
                     Text(
                         text = (actualState as ActualState.Error).message,
-                        color = Color.Red
+                        color = MaterialTheme.colorScheme.error
                     )
                 }
             }
@@ -163,34 +162,61 @@ fun InvitationScreen(
                 ) {
                     Box(
                         modifier = Modifier
-                            .background(Color(0xFFE5E5E5), RoundedCornerShape(16.dp))
+                            .background(
+                                MaterialTheme.colorScheme.surfaceVariant,
+                                RoundedCornerShape(16.dp)
+                            )
                             .padding(12.dp)
                     ) {
                         Column {
-                            Text("Жанр", color = Color.Black.copy(alpha = 0.6f))
-                            Text("${invitation?.event?.genre?.title}")
+                            Text(
+                                "Жанр",
+                                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f)
+                            )
+                            Text(
+                                "${invitation?.event?.genre?.title}",
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
                         }
                     }
 
                     Box(
                         modifier = Modifier
-                            .background(Color(0xFFE5E5E5), RoundedCornerShape(16.dp))
+                            .background(
+                                MaterialTheme.colorScheme.surfaceVariant,
+                                RoundedCornerShape(16.dp)
+                            )
                             .padding(12.dp)
                     ) {
                         Column {
-                            Text("Возраст", color = Color.Black.copy(alpha = 0.6f))
-                            Text("${invitation?.event?.minAge}+")
+                            Text(
+                                "Возраст",
+                                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f)
+                            )
+                            Text(
+                                "${invitation?.event?.minAge}+",
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
                         }
                     }
 
                     Box(
                         modifier = Modifier
-                            .background(Color(0xFFE5E5E5), RoundedCornerShape(16.dp))
+                            .background(
+                                MaterialTheme.colorScheme.surfaceVariant,
+                                RoundedCornerShape(16.dp)
+                            )
                             .padding(12.dp)
                     ) {
                         Column {
-                            Text("Роль", color = Color.Black.copy(alpha = 0.6f))
-                            Text("${invitation?.role?.title}")
+                            Text(
+                                "Роль",
+                                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f)
+                            )
+                            Text(
+                                "${invitation?.role?.title}",
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
                         }
                     }
                 }
@@ -202,7 +228,7 @@ fun InvitationScreen(
                     Spacer(Modifier.padding(10.dp))
                     Text(
                         text = invitation?.description ?: "",
-                        color = Color.Black,
+                        color = MaterialTheme.colorScheme.onBackground,
                         style = MaterialTheme.typography.titleLarge.copy(
                             fontSize = 15.sp,
                             shadow = Shadow(
@@ -218,7 +244,7 @@ fun InvitationScreen(
                     if(isAuthor){
                         Text(
                             text = "Требуется учатников: ${invitation?.requiredMember}",
-                            color = Color.Black,
+                            color = MaterialTheme.colorScheme.onBackground,
                             fontWeight = FontWeight.Bold,
                             style = MaterialTheme.typography.titleLarge.copy(
                                 fontSize = 15.sp,
@@ -234,7 +260,7 @@ fun InvitationScreen(
 
                         Text(
                             text = "Набрано учатников: ${invitation?.acceptedMember}",
-                            color = Color.Black,
+                            color = MaterialTheme.colorScheme.onBackground,
                             fontWeight = FontWeight.Bold,
                             style = MaterialTheme.typography.titleLarge.copy(
                                 fontSize = 15.sp,
@@ -254,8 +280,8 @@ fun InvitationScreen(
                                     nav.navigate("updateInvitation/${invitation?.eventId}/${invitation?.invitationId}")
                                 },
                                 colors = ButtonDefaults.buttonColors(
-                                    containerColor = Color("#007926".toColorInt()),
-                                    contentColor = Color.White
+                                    containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                                    contentColor = MaterialTheme.colorScheme.onTertiaryContainer
                                 ),
                                 modifier = Modifier
                             ) {
@@ -270,8 +296,8 @@ fun InvitationScreen(
                                     showConfirmationDialog = true
                                 },
                                 colors = ButtonDefaults.buttonColors(
-                                    containerColor = Color.Red,
-                                    contentColor = Color.White
+                                    containerColor = MaterialTheme.colorScheme.error,
+                                    contentColor = MaterialTheme.colorScheme.onError
                                 ),
                                 modifier = Modifier
                             ) {

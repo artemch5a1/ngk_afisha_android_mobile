@@ -58,6 +58,7 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.firebase.crashlytics.buildtools)
     implementation(libs.androidx.compose.runtime.livedata)
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

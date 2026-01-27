@@ -23,14 +23,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.graphics.toColorInt
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
@@ -92,7 +90,7 @@ fun InvitationCard(
         Text(
             text = invitation.shortDescription,
             fontSize = 20.sp,
-            color = Color.Black,
+            color = MaterialTheme.colorScheme.onBackground,
             fontWeight = FontWeight.W800,
             modifier = Modifier
                 .padding(bottom = 6.dp)
@@ -116,7 +114,7 @@ fun InvitationCard(
                 text = "Набор открыт до: ",
                 fontSize = 15.sp,
                 fontWeight = FontWeight.W800,
-                color = Color.Black,
+                color = MaterialTheme.colorScheme.onBackground,
                 modifier = Modifier.padding(bottom = 4.dp)
             )
 
@@ -130,8 +128,8 @@ fun InvitationCard(
                 onClick = onMoreClick,
                 modifier = Modifier,
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.Red,
-                    contentColor = Color.White
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    contentColor = MaterialTheme.colorScheme.onPrimary
                 )
             ) {
                 Text(
@@ -146,7 +144,7 @@ fun InvitationCard(
             Text(
                 text = "Требуется участников: ${invitation.requiredMember - invitation.acceptedMember}",
                 fontSize = 15.sp,
-                color = Color.Black,
+                color = MaterialTheme.colorScheme.onBackground,
                 fontWeight = FontWeight.W800,
                 modifier = Modifier
                     .align(Alignment.CenterVertically)
@@ -196,7 +194,7 @@ fun EventCard(event: Event?, controlNav: NavHostController, isAuthor:Boolean, is
             Text(
                 text = "" + event?.title,
                 fontSize = 25.sp,
-                color = Color.Black,
+                color = MaterialTheme.colorScheme.onBackground,
                 fontWeight = FontWeight.W800,
                 modifier = Modifier
                     .padding(bottom = 16.dp)
@@ -207,7 +205,7 @@ fun EventCard(event: Event?, controlNav: NavHostController, isAuthor:Boolean, is
         Text(
             text = "" + event?.shortDescription,
             fontSize = 15.sp,
-            color = Color.Black,
+            color = MaterialTheme.colorScheme.onBackground,
             fontWeight = FontWeight.W800,
             modifier = Modifier
                 .padding(bottom = 16.dp)
@@ -220,8 +218,8 @@ fun EventCard(event: Event?, controlNav: NavHostController, isAuthor:Boolean, is
                 },
                 modifier = Modifier,
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.Red,
-                    contentColor = Color.White
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    contentColor = MaterialTheme.colorScheme.onPrimary
                 )
             ) {
                 Text(
@@ -254,7 +252,7 @@ fun InvitationCard(
         modifier = modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
-            .background(Color(0xFFE0E0E0))
+            .background(MaterialTheme.colorScheme.surfaceVariant)
             .padding(10.dp)
     ) {
 
@@ -339,8 +337,8 @@ fun StudentPanel(
                     onCancelRequest()
                 },
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.Red,
-                    contentColor = Color.White
+                    containerColor = MaterialTheme.colorScheme.error,
+                    contentColor = MaterialTheme.colorScheme.onError
                 ),
                 modifier = Modifier
             ) {
@@ -365,8 +363,8 @@ fun PublisherPanel(
                     onAccept()
                 },
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color("#007926".toColorInt()),
-                    contentColor = Color.White
+                    containerColor = MaterialTheme.colorScheme.tertiary,
+                    contentColor = MaterialTheme.colorScheme.onTertiary
                 ),
                 modifier = Modifier
             ) {
@@ -382,8 +380,8 @@ fun PublisherPanel(
                 onRejectRequest()
             },
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color.Red,
-                contentColor = Color.White
+                containerColor = MaterialTheme.colorScheme.error,
+                contentColor = MaterialTheme.colorScheme.onError
             ),
             modifier = Modifier
         ) {

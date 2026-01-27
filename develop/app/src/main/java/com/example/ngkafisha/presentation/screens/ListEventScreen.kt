@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -21,13 +22,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
-import androidx.core.graphics.toColorInt
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.domain.common.enums.Role
@@ -57,7 +56,7 @@ fun ListEventScreen(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color.White)
+                .background(MaterialTheme.colorScheme.background)
                 .zIndex(1f)
         ) {
             Column {
@@ -79,6 +78,8 @@ fun ListEventScreen(
                     )
                 }
 
+                Spacer(modifier = Modifier.height(15.dp))
+
                 if(listEventScreenViewModel.sessionInfoStore.currentAccount?.accountRole == Role.Publisher){
                     Row {
 
@@ -99,8 +100,8 @@ fun ListEventScreen(
                                 controlNav.navigate("createEventScreen")
                             },
                             colors = ButtonDefaults.buttonColors(
-                                containerColor = Color("#007926".toColorInt()),
-                                contentColor = Color.Black
+                                containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                                contentColor = MaterialTheme.colorScheme.onTertiaryContainer
                             ),
                             modifier = Modifier.padding(bottom = 8.dp)
                         ) {
