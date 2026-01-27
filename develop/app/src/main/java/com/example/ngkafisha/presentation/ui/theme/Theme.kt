@@ -1,7 +1,6 @@
 package com.example.ngkafisha.presentation.ui.theme
 
 import android.os.Build
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
@@ -10,6 +9,7 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.core.graphics.toColorInt
 
 private val DarkColorScheme = darkColorScheme(
     primary = PrimaryRedDark,
@@ -18,8 +18,8 @@ private val DarkColorScheme = darkColorScheme(
     onSecondary = Color.White,
     tertiary = SuccessGreenDark,
     onTertiary = Color.White,
-    tertiaryContainer = Color(0xFF1A5C2E),
-    onTertiaryContainer = SuccessGreenDark,
+    tertiaryContainer = Color("#007926".toColorInt()),
+    onTertiaryContainer = Color.Black,
     background = BackgroundDark,
     onBackground = OnBackgroundDark,
     surface = BackgroundDark,
@@ -28,8 +28,8 @@ private val DarkColorScheme = darkColorScheme(
     onSurfaceVariant = Color.White,
     outline = FieldGrayDark,
     outlineVariant = CardGrayDark,
-    error = Color(0xFFCF6679),
-    onError = Color.White,
+    error = Color("#FF0000".toColorInt()),
+    onError = Color.Black,
     errorContainer = Color(0xFF93000A),
     onErrorContainer = Color(0xFFFFDAD6),
     secondaryContainer = SurfaceGrayDark,
@@ -43,8 +43,8 @@ private val LightColorScheme = lightColorScheme(
     onSecondary = Color.Black,
     tertiary = SuccessGreen,
     onTertiary = Color.White,
-    tertiaryContainer = Color(0xFFB8E6C8),
-    onTertiaryContainer = Color(0xFF00210A),
+    tertiaryContainer = Color("#007926".toColorInt()),
+    onTertiaryContainer = Color.Black,
     background = BackgroundLight,
     onBackground = OnBackgroundLight,
     surface = BackgroundLight,
@@ -53,8 +53,8 @@ private val LightColorScheme = lightColorScheme(
     onSurfaceVariant = Color.Black,
     outline = FieldGray,
     outlineVariant = SurfaceGray,
-    error = Color(0xFFBA1A1A),
-    onError = Color.White,
+    error = Color("#FF0000".toColorInt()),
+    onError = Color.Black,
     errorContainer = Color(0xFFFFDAD6),
     onErrorContainer = Color(0xFF410002),
     secondaryContainer = SurfaceGray,
