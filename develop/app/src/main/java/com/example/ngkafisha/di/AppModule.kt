@@ -150,15 +150,15 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideSession(sessionRepository: SessionRepository): Session = Session(sessionRepository)
+    fun provideSession(sessionRepository: SessionRepository): SessionStoreService {
+        return Session(sessionRepository)
+    }
 
     @Provides
     @Singleton
-    fun provideSessionInfoStore(session: Session): SessionInfoStore = session
-
-    @Provides
-    @Singleton
-    fun provideSessionStoreService(session: Session): SessionStoreService = session
+    fun provideSessionInfoStore(sessionStoreService: SessionStoreService): SessionInfoStore {
+        return sessionStoreService
+    }
 
     @Provides
     @Singleton

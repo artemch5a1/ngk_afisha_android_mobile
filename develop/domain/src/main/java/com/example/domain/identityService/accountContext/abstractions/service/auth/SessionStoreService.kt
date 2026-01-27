@@ -3,7 +3,7 @@ package com.example.domain.identityService.accountContext.abstractions.service.a
 import com.example.domain.identityService.accountContext.models.AccountSession
 
 
-interface SessionStoreService {
+interface SessionStoreService : SessionInfoStore {
 
     fun setSession(accountSession: AccountSession)
     fun resetSession()

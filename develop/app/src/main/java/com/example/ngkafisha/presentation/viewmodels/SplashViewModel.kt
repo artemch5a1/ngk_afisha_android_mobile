@@ -2,7 +2,6 @@ package com.example.ngkafisha.presentation.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.application.identityService.accountContext.services.auth.Session
 import com.example.application.identityService.accountContext.useCases.ValidateTokenUseCase
 import com.example.domain.common.models.CustomResult
 import com.example.domain.identityService.accountContext.abstractions.service.auth.SessionInfoStore
@@ -18,10 +17,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
-    private val session: Session,
+    private val sessionInfoStore: SessionInfoStore,
     private val sessionRepository: SessionRepository,
-    private val validateTokenUseCase: ValidateTokenUseCase,
-    private val sessionInfoStore: SessionInfoStore
+    private val validateTokenUseCase: ValidateTokenUseCase
 ) : ViewModel() {
 
     private val _isLoading = MutableStateFlow(true)
@@ -57,7 +55,7 @@ class SplashViewModel @Inject constructor(
                         accessToken = savedToken
                     )
 
-                    session.setSessionWithSave(accountSession)
+                    sessionInfoStore.setSessionWithSave(accountSession)
                     _shouldNavigateToHome.value = true
                 } else {
                     sessionRepository.clearToken()

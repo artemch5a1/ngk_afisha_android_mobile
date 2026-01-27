@@ -33,7 +33,7 @@ class Session(
         _sessionChanged.invoke(SessionInfoStore.SessionChangedData(this))
     }
 
-    suspend fun setSessionWithSave(accountSession: AccountSession) {
+    override suspend fun setSessionWithSave(accountSession: AccountSession) {
         _currentSession = accountSession
         sessionPersistence?.saveSession(
             accountSession.accessToken,
@@ -43,13 +43,13 @@ class Session(
         _sessionChanged.invoke(SessionInfoStore.SessionChangedData(this))
     }
 
-    suspend fun setSessionWithCredentials(accountSession: AccountSession, email: String, password: String) {
+    override suspend fun setSessionWithCredentials(accountSession: AccountSession, email: String, password: String) {
         _currentSession = accountSession
         sessionPersistence?.saveSession(accountSession.accessToken, email, password)
         _sessionChanged.invoke(SessionInfoStore.SessionChangedData(this))
     }
 
-    suspend fun loadSessionFromStorage(): Boolean {
+    override suspend fun loadSessionFromStorage(): Boolean {
         val token = sessionPersistence?.getAccessToken()
         return token != null
     }
@@ -59,7 +59,7 @@ class Session(
         _sessionChanged.invoke(SessionInfoStore.SessionChangedData(this))
     }
 
-    suspend fun resetSessionWithClear() {
+    override suspend fun resetSessionWithClear() {
         _currentSession = null
         sessionPersistence?.clearToken()
         _sessionChanged.invoke(SessionInfoStore.SessionChangedData(this))
@@ -70,13 +70,13 @@ class Session(
         _sessionChanged.invoke(SessionInfoStore.SessionChangedData(this, message))
     }
 
-    suspend fun resetSessionWithClear(message: String) {
+    override suspend fun resetSessionWithClear(message: String) {
         _currentSession = null
         sessionPersistence?.clearToken()
         _sessionChanged.invoke(SessionInfoStore.SessionChangedData(this, message))
     }
 
-    suspend fun clearAllSessionData() {
+    override suspend fun clearAllSessionData() {
         _currentSession = null
         sessionPersistence?.clearSession()
         _sessionChanged.invoke(SessionInfoStore.SessionChangedData(this))

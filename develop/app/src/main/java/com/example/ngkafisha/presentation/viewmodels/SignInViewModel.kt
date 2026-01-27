@@ -4,9 +4,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavHostController
-import com.example.application.identityService.accountContext.services.auth.Session
 import com.example.application.identityService.accountContext.useCases.LoginUseCase
 import com.example.domain.common.models.CustomResult
+import com.example.domain.identityService.accountContext.abstractions.service.auth.SessionInfoStore
 import com.example.domain.identityService.accountContext.models.AccountSession
 import com.example.ngkafisha.presentation.models.states.ActualState
 import com.example.ngkafisha.presentation.models.states.SignInState
@@ -21,7 +21,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SignInViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase,
-    private val session: Session,
+    private val sessionInfoStore: SessionInfoStore,
     private val sessionRepository: SessionRepository
 ) : ViewModel() {
 
@@ -59,7 +59,7 @@ class SignInViewModel @Inject constructor(
             {
                 // Сохраняем сессию с учётными данными
                 val accountSession = customResult.value!!
-                session.setSessionWithCredentials(
+                sessionInfoStore.setSessionWithCredentials(
                     accountSession,
                     signInState.email,
                     signInState.password
