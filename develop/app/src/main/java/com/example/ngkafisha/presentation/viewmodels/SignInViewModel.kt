@@ -57,7 +57,6 @@ class SignInViewModel @Inject constructor(
 
             if(customResult.isSuccess && customResult.value != null)
             {
-                // Сохраняем сессию с учётными данными
                 val accountSession = customResult.value!!
                 sessionInfoStore.setSessionWithCredentials(
                     accountSession,

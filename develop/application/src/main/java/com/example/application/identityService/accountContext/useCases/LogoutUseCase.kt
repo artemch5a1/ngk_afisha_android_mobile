@@ -11,10 +11,7 @@ class LogoutUseCase @Inject constructor(
     : BaseUseCase<Unit, Unit>(sessionStoreService) {
 
     override suspend fun invokeLogic(request: Unit): CustomResult<Unit> {
-
-        // Очищаем все данные сессии (токен, email, password)
         sessionStoreService.clearAllSessionData()
-
         return CustomResult.success(Unit)
     }
 

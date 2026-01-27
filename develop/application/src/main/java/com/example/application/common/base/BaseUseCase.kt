@@ -17,7 +17,6 @@ abstract class BaseUseCase<TRequest, TResponse>(protected val sessionStoreServic
         catch (ex: ApiException) {
 
             if(ex.code == 401){
-                // Очищаем только токен, сохраняя email и password для автозаполнения
                 sessionStoreService.resetSessionWithClear("Сессия была завершена, пожалуйста войдите заново")
             }
 
