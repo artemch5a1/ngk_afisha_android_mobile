@@ -17,4 +17,7 @@ dependencies{
     implementation("javax.inject:javax.inject:1")
 
     implementation(project(":domain"))
+    
+    // Kotlin Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
 }

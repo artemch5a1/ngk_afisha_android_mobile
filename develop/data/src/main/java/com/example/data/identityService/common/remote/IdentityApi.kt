@@ -17,6 +17,7 @@ import com.example.data.identityService.userContext.dto.UpdateUserDto
 import com.example.data.identityService.userContext.dto.UserDto
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.PUT
@@ -33,6 +34,9 @@ interface IdentityApi {
 
     @GET("AccountActions/CurrentAccount")
     suspend fun getCurrentAccountAsync(): AccountDto
+
+    @GET("AccountActions/CurrentAccount")
+    suspend fun getCurrentAccountByTokenAsync(@Header("Authorization") token: String): AccountDto
 
 
 

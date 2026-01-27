@@ -2,6 +2,7 @@ package com.example.application.common.base
 
 import com.example.domain.common.exceptions.ApiException
 import com.example.domain.common.models.CustomResult
+import com.example.domain.identityService.accountContext.abstractions.service.auth.SessionInfoStore
 import com.example.domain.identityService.accountContext.abstractions.service.auth.SessionStoreService
 
 abstract class BaseUseCase<TRequest, TResponse>(protected val sessionStoreService: SessionStoreService) {
@@ -16,7 +17,7 @@ abstract class BaseUseCase<TRequest, TResponse>(protected val sessionStoreServic
         catch (ex: ApiException) {
 
             if(ex.code == 401){
-                sessionStoreService.resetSession("Сессия была завершена, пожалуйста войдите заново")
+                sessionStoreService.resetSessionWithClear("Сессия была завершена, пожалуйста войдите заново")
             }
 
             CustomResult.failure(ex, codeMessageMap)

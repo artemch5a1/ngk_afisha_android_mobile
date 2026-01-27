@@ -11,9 +11,7 @@ class LogoutUseCase @Inject constructor(
     : BaseUseCase<Unit, Unit>(sessionStoreService) {
 
     override suspend fun invokeLogic(request: Unit): CustomResult<Unit> {
-
-        sessionStoreService.resetSession()
-
+        sessionStoreService.clearAllSessionData()
         return CustomResult.success(Unit)
     }
 

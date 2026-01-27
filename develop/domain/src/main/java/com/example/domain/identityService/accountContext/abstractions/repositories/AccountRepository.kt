@@ -15,5 +15,7 @@ interface AccountRepository {
 
     suspend fun getCurrentAccount() : Account
 
+    suspend fun getCurrentAccountByToken(accessToken: String) : Account
+
     suspend fun changeAccountPassword(changePassword: ChangePassword) : UUID
 }

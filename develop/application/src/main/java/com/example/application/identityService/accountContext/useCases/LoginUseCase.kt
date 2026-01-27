@@ -24,6 +24,7 @@ class LoginUseCase @Inject constructor(
         val result = accountRepository
             .takeLoginRequest(request.email.toLowerCase(Locale.ROOT), request.password)
 
+        // Устанавливаем сессию (сохранение будет сделано в SignInViewModel с учётными данными)
         sessionStoreService.setSession(result)
 
         return CustomResult.success(result)

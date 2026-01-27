@@ -2,6 +2,7 @@ package com.example.ngkafisha.di
 
 import com.example.application.identityService.accountContext.services.auth.Session
 import com.example.application.identityService.accountContext.useCases.LoginUseCase
+import com.example.ngkafisha.presentation.settings.SessionRepository
 import com.example.data.common.utils.OkHttpFileUploader
 import com.example.data.eventService.remote.EventApi
 import com.example.data.eventService.repositories.EventRepositoryImpl
@@ -149,15 +150,15 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideSession(): Session = Session()
+    fun provideSession(sessionRepository: SessionRepository): SessionStoreService {
+        return Session(sessionRepository)
+    }
 
     @Provides
     @Singleton
-    fun provideSessionInfoStore(session: Session): SessionInfoStore = session
-
-    @Provides
-    @Singleton
-    fun provideSessionStoreService(session: Session): SessionStoreService = session
+    fun provideSessionInfoStore(sessionStoreService: SessionStoreService): SessionInfoStore {
+        return sessionStoreService
+    }
 
     @Provides
     @Singleton
