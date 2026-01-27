@@ -78,6 +78,8 @@ fun ListEventScreen(
                     )
                 }
 
+                Spacer(modifier = Modifier.height(15.dp))
+
                 if(listEventScreenViewModel.sessionInfoStore.currentAccount?.accountRole == Role.Publisher){
                     Row {
 
