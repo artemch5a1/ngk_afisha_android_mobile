@@ -226,6 +226,45 @@ JVM-модуль с бизнес-логикой приложения.
 
 Настройки темы сохраняются локально и применяются при каждом запуске.
 
+### Скриншоты экранов
+
+Ниже представлены основные экраны приложения в **светлой** и **темной** темах.
+
+#### Главный экран
+
+<div align="center">
+<img src="documentation/screenshots/Главная (светлая тема).png" width="45%" alt="Главный экран — светлая тема" />
+<img src="documentation/screenshots/Главный_экран(темная тема).png" width="45%" alt="Главный экран — тёмная тема" />
+</div>
+
+#### Экран заявок
+
+<div align="center">
+<img src="documentation/screenshots/Заявки(светлая тема).png" width="45%" alt="Заявки — светлая тема" />
+<img src="documentation/screenshots/Заявки(темная тема).png" width="45%" alt="Заявки — тёмная тема" />
+</div>
+
+#### Экран приглашений
+
+<div align="center">
+<img src="documentation/screenshots/Приглашения(светлая тема).png" width="45%" alt="Приглашения — светлая тема" />
+<img src="documentation/screenshots/Приглашения(темная тема).png" width="45%" alt="Приглашения — тёмная тема" />
+</div>
+
+#### Подробности события
+
+<div align="center">
+<img src="documentation/screenshots/Подробности_события(светлая тема).png" width="45%" alt="Подробности события — светлая тема" />
+<img src="documentation/screenshots/Подробности_события(темная тема).png" width="45%" alt="Подробности события — тёмная тема" />
+</div>
+
+#### Профиль пользователя
+
+<div align="center">
+<img src="documentation/screenshots/Профиль(светлая тема).png" width="45%" alt="Профиль пользователя — светлая тема" />
+<img src="documentation/screenshots/Профиль (темная тема).png" width="45%" alt="Профиль пользователя — тёмная тема" />
+</div>
+
 ### Навигация
 
 - **Bottom Navigation Bar** — быстрый доступ к основным разделам
